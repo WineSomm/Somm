@@ -7,10 +7,6 @@ require('dotenv').config();
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.use((req, res) => {
-//   res.setHeader('Content-Type', 'text/plain');
-//   res.end(JSON.stringify(req.body, null, 2));
-// });
 
 app.use(express.static(`${__dirname}/client`));
 
