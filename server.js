@@ -28,6 +28,10 @@ app.get('/search', (req, res) => {
   res.send('hi');
 });
 
+app.post('/search', (req, res) => {
+  res.send('searching');
+});
+
 app.get('/*', (req, res) => {
   res.redirect('/');
 });
