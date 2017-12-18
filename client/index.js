@@ -1,6 +1,6 @@
 angular.module('app', [])
   .component('homepage', {
-    template: '<h1>hello from template</h1>',
+    templateUrl: 'homepage.html',
     controller() {
       this.wine = 'beaujoulais';
     },
