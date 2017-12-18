@@ -1,0 +1,126 @@
+{
+  "nextskip": 10,
+  "category": "All",
+  "items": [
+    {
+      "id": "552f5602d0259c030000000e",
+      "Name": "Decoy",
+      "Winery": "Duckhorn Vineyards",
+      "Area": "Sonoma County",
+      "Province": "",
+      "Country": "USA",
+      "Varietal": "Cabernet Sauvignon",
+      "vintage": "2012",
+      "Style": "",
+      "Type": "Red"
+    },
+    {
+      "id": "535975da682acc0200007506",
+      "Name": "Sonoma County",
+      "Winery": "Duckhorn Vineyards",
+      "Area": "Napa Valley",
+      "Province": "California",
+      "Country": "USA",
+      "Varietal": "Merlot, Cabernet Sauvignon, Cabernet Franc",
+      "vintage": "nv",
+      "Style": "",
+      "Type": "Red"
+    },
+    {
+      "id": "535977ba682acc0200009118",
+      "Name": "C Blend",
+      "Winery": "Duckhorn Vineyards",
+      "Area": "Napa Valley",
+      "Province": "California",
+      "Country": "USA",
+      "Varietal": "Cabernet Sauvignon. Zinfandel",
+      "vintage": "nv",
+      "Style": "",
+      "Type": "Red"
+    },
+    {
+      "id": "535a61b17dd3dc0200006282",
+      "Name": "Estate Grown Patzimaro Vineyard",
+      "Winery": "Duckhorn Vineyards",
+      "Area": "Napa Valley",
+      "Province": "California",
+      "Country": "USA",
+      "Varietal": "Cabernet Sauvignon",
+      "vintage": "nv",
+      "Style": "",
+      "Type": "Red"
+    },
+    {
+      "id": "535a60617dd3dc02000051de",
+      "Name": "Z Blend",
+      "Winery": "Duckhorn Vineyards",
+      "Area": "Napa Valley",
+      "Province": "California",
+      "Country": "USA",
+      "Varietal": "Zinfandel, Cabernet Sauvignon, Merlot",
+      "vintage": "nv",
+      "Style": "",
+      "Type": "Red"
+    },
+    {
+      "id": "535977ba682acc0200009117",
+      "Name": "Napa Valley",
+      "Winery": "Duckhorn Vineyards",
+      "Area": "Napa Valley",
+      "Province": "California",
+      "Country": "USA",
+      "Varietal": "Cabernet Sauvignon",
+      "vintage": "nv",
+      "Style": "",
+      "Type": "Red"
+    },
+    {
+      "id": "535a60617dd3dc02000051dd",
+      "Name": "Estate Grown Rector Creek",
+      "Winery": "Duckhorn Vineyards",
+      "Area": "Napa Valley",
+      "Province": "California",
+      "Country": "USA",
+      "Varietal": "Cabernet Sauvignon",
+      "vintage": "nv",
+      "Style": "",
+      "Type": "Red"
+    },
+    {
+      "id": "535a5fe27dd3dc0200003b5b",
+      "Name": "Howell Mountain",
+      "Winery": "Duckhorn Vineyards",
+      "Area": "Napa Valley",
+      "Province": "California",
+      "Country": "USA",
+      "Varietal": "Zinfandel, Cabernet Sauvignon",
+      "vintage": "nv",
+      "Style": "",
+      "Type": "Red"
+    },
+    {
+      "id": "535a5fb27dd3dc0200002e9c",
+      "Name": "Estate Grown",
+      "Winery": "Duckhorn Vineyards",
+      "Area": "Napa Valley",
+      "Province": "California",
+      "Country": "USA",
+      "Varietal": "Cabernet Sauvignon",
+      "vintage": "nv",
+      "Style": "",
+      "Type": "Red"
+    },
+    {
+      "id": "535974f8682acc0200006257",
+      "Name": "Howell Mountain",
+      "Winery": "Duckhorn Vineyards",
+      "Area": "Napa Valley",
+      "Province": "California",
+      "Country": "USA",
+      "Varietal": "Cabernet Sauvignon",
+      "vintage": "nv",
+      "Style": "",
+      "Type": "Red"
+    }
+  ]
+}
