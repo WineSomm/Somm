@@ -6,8 +6,16 @@
   <title>SOMM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="index.js"></script>
+  <script src="winePage.js"></script>
+  <script src="wineSearch.js"></script>
 </head>
-<body>
-  <div><p>hi</p></div> 
+<body ng-app="app">
+  <div controller="homepage">
+    <p>{{$ctrl.wine}}</p>
+  </div>
 </body>
 </html>
