@@ -54,6 +54,7 @@ app.post('/signup', (req, res) => {
   const user = new User({
     username: req.body.username,
     password: req.body.password,
+    favorites: null,
   });
   User.findOne({ username: user.username }, (err, entry) => {
     if (entry) {
@@ -97,13 +98,17 @@ app.post('/favorite', (req, res) => {
     const username = req.session.username;
     User.findOne({ username: username }, (err, entry) => {
       if (entry.favorites) {
-        const newFavorites = entry.favorites.split(' ');
-        newFavorites.push(favorite);
-        entry.favorites = newFavorites;
+        console.log('favorites exist');
+        const newFavorites = entry.favorites + JSON.stringify(favorite);
+        entry.set({ favorites: newFavorites });
         entry.save();
       } else {
-        entry.favorites = favorite;
-        entry.save();
+        entry.set({ favorites: JSON.stringify(favorite) });
+        entry.save((error, updated) => {
+          if (error) {
+            console.error(error);
+          }
+        });
       }
       res.end();
     });
@@ -111,7 +116,7 @@ app.post('/favorite', (req, res) => {
 });
 
 app.get('/favorite', (req, res) => {
-  // TODO: pull username out of request
+  const username = req.session.username;
   // User.findOne({username: username}, (err, entry) => {
   //   const splitFavorites = entry.favorites.split(' ');
   //   res.send(splitFavorites);
