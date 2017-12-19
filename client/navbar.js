@@ -15,12 +15,14 @@ angular.module('app')
           });
       };
       this.signUp = () => {
-        username = prompt('Choose a username: ');
-        window.location.search = `username=${username}`;
+        $http.get('localhost:9000/signup', (req, res) => {
+          console.log(res);
+        });
       };
       this.login = () => {
-        username = prompt('What is your username?');
-        window.location.search = `username=${username}`;
+        $http.get('localhost:9000/login', (req, res) => {
+          console.log(res);
+        });
       };
     },
   });
