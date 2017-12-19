@@ -1,9 +1,11 @@
 <div class='well well-lg'>
-  <div>Winery: {{$ctrl.wine.Winery}}</div>
-  <div>Name: {{$ctrl.wine.Name}}</div>
-  <div>Region: {{$ctrl.wine.Area}}, {{$ctrl.wine.Province}}, {{$ctrl.wine.Country}}</div>
-  <div>Varietal: {{$ctrl.wine.Varietal}}</div>
+  <img ng-src={{$ctrl.wine.image}} />
+  <div>Winery: {{$ctrl.wine.winery}}</div>
+  <div>Name: {{$ctrl.wine.name}}</div>
+  <div>Region: {{$ctrl.wine.region}}</div>
+  <div>Varietal: {{$ctrl.wine.varietal}}</div>
   <div>Vintage: {{$ctrl.wine.vintage}}</div>
+  <div>Price: {{$ctrl.wine.price}}</div>
   <div>{{$ctrl.specifics}}</div>
-  <div ng-if='$ctrl.varietalData[$ctrl.wine.Varietal]'>Probable tasting notes: {{$ctrl.varietalData[$ctrl.wine.Varietal]}}</div>
+  <div ng-if='$ctrl.varietalData[$ctrl.wine.varietal]'>Probable tasting notes: {{$ctrl.varietalData[$ctrl.wine.varietal]}}</div>
 </div>

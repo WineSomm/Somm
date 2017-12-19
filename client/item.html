@@ -1,15 +1,15 @@
 <div class="container-fluid">
   <div ng-if="!$ctrl.favoriteView" class="well">
     <div class="row">
-      <img class="wine-bottle" ng-src="photos/redWineBottle.png" />
-      <h4 class="item-text">{{$ctrl.wine.Winery}} {{$ctrl.wine.Name}}</h4>
+      <img class="wine-bottle" ng-src={{$ctrl.wine.image}} />
+      <h4 class="item-text">{{$ctrl.wine.name}}</h4>
       <button type="button" class="btn btn-default btn-md"><span class="glyphicon glyphicon-star" aria-hidden="true" ng-click="$ctrl.favorite()"> Favorite</span></button>
     </div>
   </div>
   <div ng-if="$ctrl.favoriteView" class="well">
     <div class="row">
-      <img class="wine-bottle" ng-src="photos/redWineBottle.png" />
-      <h4 class="item-text">{{$ctrl.wine.Winery}} {{$ctrl.wine.Name}}</h4>
+      <img class="wine-bottle" ng-src={{$ctrl.wine.image}} />
+      <h4 class="item-text">{{$ctrl.wine.winery}} {{$ctrl.wine.name}}</h4>
       <button type="button" class="btn btn-default btn-md"><span class="glyphicon glyphicon-star" aria-hidden="true" ng-click="$ctrl.unfavorite()"> Unfavorite</span></button>
     </div>
   </div>

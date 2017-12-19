@@ -10,9 +10,16 @@ angular.module('app')
       this.onClick = (input) => {
         this.favoriteView = false;
         const replaced = input.split(' ').join('+');
-        $http.get(`https://quiniwine.com/api/pub/wineKeywordSearch/${replaced}`)
+        $http.get('http://api.snooth.com/wines', {
+          params: {
+            akey: window.akey,
+            q: replaced,
+            n: 25,
+          },
+        })
           .then((res) => {
-            this.wineList = res.data.items;
+            console.log(res.data.wines);
+            this.wineList = res.data.wines;
           });
       };
       this.gohome = () => {

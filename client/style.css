@@ -19,7 +19,7 @@ body {
 .wine-bottle {
   height: 75px;
   float: left;
-  padding-left: 50px;
+  padding-left: 10px;
 }
 
 glyphicon {
