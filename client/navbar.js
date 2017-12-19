@@ -10,16 +10,13 @@ angular.module('app')
       this.onClick = (input) => {
         this.favoriteView = false;
         const replaced = input.split(' ').join('+');
-        $http.get('http://api.snooth.com/wines', {
-          params: {
-            akey: process.env.API_KEY,
-            q: replaced,
-            n: 25,
-          },
+        console.log('searching');
+        $http.post('/search', {
+          wine: replaced,
         })
           .then((res) => {
-            console.log(res.data.wines);
-            this.wineList = res.data.wines;
+            console.log(res);
+            this.wineList = res.data;
           });
       };
       this.gohome = () => {

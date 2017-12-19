@@ -2,6 +2,8 @@ const express = require('express');
 
 const bodyParser = require('body-parser');
 
+const axios = require('axios');
+
 const session = require('express-session');
 
 require('dotenv').config();
@@ -148,6 +150,32 @@ app.delete('/favorite', (req, res) => {
     });
     res.status(204).send();
   });
+});
+
+app.post('/search', (req, res) => {
+  const query = req.body.wine;
+  axios.get('http://api.snooth.com/wines', {
+    params: {
+      akey: process.env.API_KEY,
+      q: query,
+      n: 25,
+    },
+  })
+    .then((response) => {
+      console.log(response.data.wines);
+      res.status(200).send(response.data.wines);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(404).send();
+    });
+  // $http.get('http://api.snooth.com/wines', {
+  //   params: {
+  //     akey: process.env.API_KEY,
+  //     q: replaced,
+  //     n: 25,
+  //   },
+  // })
 });
 
 app.listen(port, () => {
