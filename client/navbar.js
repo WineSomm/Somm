@@ -15,7 +15,11 @@ angular.module('app')
           });
       };
       this.signUp = () => {
-        $http.get('localhost:9000/signup', (req, res) => {
+        $http({
+          method: 'GET',
+          url: 'localhost:9000/signup',
+          
+        }).then((req, res) => {
           console.log(res);
         });
       };

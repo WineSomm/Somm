@@ -16,10 +16,10 @@ app.use(bodyParser.json());
 
 app.use(express.static(`${__dirname}/client`));
 
-// app.use(session({
-//   secret: 'a4f8071f-c873-4447-8ee2',
-//   cookie: { maxAge: 2628000000 },
-// }));
+app.use(session({
+  secret: 'a4f8071f-c873-4447-8ee2',
+  cookie: { maxAge: 2628000000 },
+}));
 
 const port = process.env.PORT || 9000;
 
@@ -32,12 +32,13 @@ app.post('/search', (req, res) => {
 });
 
 app.get('/signup', (req, res) => {
-  console.log('sign up');
-  res.redirect('/signup');
+  app.use(express.static(`${__dirname}/client/signup`));
+  res.end();
 });
 
 app.get('/login', (req, res) => {
-  res.redirect('/login');
+  app.use(express.static(`${__dirname}/client/signup`));
+  res.end();
 });
 
 app.listen(port, () => {
