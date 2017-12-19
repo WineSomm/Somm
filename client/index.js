@@ -3,5 +3,6 @@ angular.module('app', [])
     templateUrl: 'homepage.html',
     controller() {
       this.wineList = window.data;
+      this.selected = null;
     },
   });

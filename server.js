@@ -4,9 +4,27 @@ const bodyParser = require('body-parser');
 
 const session = require('express-session');
 
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// mongoose.connect();
+const MongoDb = 'mongodb://preston:Catharine73@ds161446.mlab.com:61446/somm';
+
+mongoose.connect(MongoDb, {
+  useMongoClient: true,
+});
+
+const db = mongoose.connection;
+
+db.once('open', () => {
+  console.log('Mongoose is connected');
+});
+
+const userSchema = mongoose.Schema({
+  username: String,
+  password: String,
+  favorites: String,
+});
+
+const User = mongoose.model('User', userSchema);
 
 require('dotenv').config();
 
@@ -32,6 +50,15 @@ app.post('/search', (req, res) => {
 });
 
 app.get('/signup', (req, res) => {
+  const user = new User({
+    username: 'Preston',
+    password: 'abc',
+  });
+  user.save((err) => {
+    if (err) {
+      console.error(err);
+    }
+  });
   app.use(express.static(`${__dirname}/client/signup`));
   res.end();
 });

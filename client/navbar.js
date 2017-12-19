@@ -2,6 +2,7 @@ angular.module('app')
   .component('navbar', {
     bindings: {
       wineList: '=',
+      selected: '=',
     },
     templateUrl: 'navbar.html',
     controller($scope, $http) {
@@ -18,7 +19,6 @@ angular.module('app')
         $http({
           method: 'GET',
           url: 'localhost:9000/signup',
-          
         }).then((req, res) => {
           console.log(res);
         });
@@ -27,6 +27,9 @@ angular.module('app')
         $http.get('localhost:9000/login', (req, res) => {
           console.log(res);
         });
+      };
+      this.gohome = () => {
+        this.selected = null;
       };
     },
   });

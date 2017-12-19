@@ -2,6 +2,7 @@ angular.module('app')
   .component('list', {
     bindings: {
       wineList: '<',
+      selected: '=',
     },
     templateUrl: 'list.html',
     controller() {
