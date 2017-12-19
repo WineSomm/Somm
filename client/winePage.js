@@ -4,6 +4,7 @@ angular.module('app')
       wine: '<',
     },
     templateUrl: 'winePage.html',
-    controller: () => {
+    controller() {
+      this.varietalData = window.varietalData;
     },
   });
