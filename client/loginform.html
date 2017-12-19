@@ -1,0 +1,15 @@
+<navbar></navbar>
+<div class="jumbotron">
+  <h1>SOMM</h1>
+</div>
+<form>
+  <div class="form-group">
+    <label for="username">Enter your username</label>
+    <input ng-model="username" type="text" class="form-control" id="formGroupExampleInput" placeholder="Your username here">
+  </div>
+  <div class="form-group">
+    <label for="password">Enter your password</label>
+    <input ng-model="password" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Your password here">
+  </div>
+    <button type="button" class="btn btn-primary" ng-click="$ctrl.onClick(username, password)">LOG IN</button>
+</form>

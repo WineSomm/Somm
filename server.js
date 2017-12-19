@@ -44,30 +44,31 @@ app.use(session({
 const port = process.env.PORT || 9000;
 
 app.get('/signup', (req, res) => {
-  // TODO: Make this work
-  app.use(express.static(`${__dirname}/client/signup`));
   res.end();
-  // res.render('signup', (err, html) => {
-  //   res.send(html);
-  // });
 });
 
 app.post('/signup', (req, res) => {
+  console.log(req.body);
   const user = new User({
-    username: req.username,
-    password: req.password,
+    username: req.body.username,
+    password: req.body.password,
   });
-  user.save((err) => {
-    if (err) {
-      console.error(err);
+  User.findOne({ username: user.username }, (err, entry) => {
+    if (entry) {
+      res.send('Already found');
+    } else {
+      user.save((error) => {
+        if (error) {
+          console.error(error);
+        }
+        res.end();
+      });
     }
   });
   // TODO: Create username on session, send resposne to user
 });
 
 app.get('/login', (req, res) => {
-  app.use(express.static(`${__dirname}/client/signup`));
-  // TODO: Make this work
   res.end();
 });
 
