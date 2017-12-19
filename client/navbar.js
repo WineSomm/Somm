@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 angular.module('app')
   .component('navbar', {
     bindings: {
