@@ -12,7 +12,7 @@ angular.module('app')
         const replaced = input.split(' ').join('+');
         $http.get('http://api.snooth.com/wines', {
           params: {
-            akey: window.akey,
+            akey: process.env.API_KEY || window.akey,
             q: replaced,
             n: 25,
           },
