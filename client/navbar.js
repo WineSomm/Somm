@@ -14,5 +14,13 @@ angular.module('app')
             this.wineList = res.data.items;
           });
       };
+      this.signUp = () => {
+        username = prompt('Choose a username: ');
+        window.location.search = `username=${username}`;
+      };
+      this.login = () => {
+        username = prompt('What is your username?');
+        window.location.search = `username=${username}`;
+      };
     },
   });

@@ -1,3 +1,9 @@
 <div>
-  <item ng-click="$ctrl.onClick($index)" ng-repeat="wine in $ctrl.wineList" wine="wine"></item>
+  <div ng-if="$ctrl.selected">
+    <pre>{{$ctrl.selected}}</pre>
+  </div>
+  <item 
+    ng-click="$ctrl.onClick($index)" 
+    ng-repeat="wine in $ctrl.wineList" 
+    wine="wine"></item>
 </div>

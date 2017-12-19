@@ -6,7 +6,7 @@ angular.module('app')
     templateUrl: 'list.html',
     controller() {
       this.onClick = function (index) {
-        console.log(this.wineList[index]);
+        this.selected = this.wineList[index];
       };
     },
   });
