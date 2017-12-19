@@ -61,7 +61,7 @@ app.post('/signup', (req, res) => {
         if (error) {
           console.error(error);
         }
-        res.end();
+        res.redirect('/');
       });
     }
   });
@@ -73,7 +73,15 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  // TODO: Create username on session, send response to user
+  User.findOne({ username: req.body.username, password: req.body.password }, (err, entry) => {
+    if (err) {
+      console.error(err);
+      res.writeHead(400);
+      res.end('Sorry, there was a problem with your username or password');
+    } else if (entry) {
+      res.redirect('/');
+    }
+  });
 });
 
 app.post('/favorite', (req, res) => {

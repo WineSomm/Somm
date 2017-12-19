@@ -5,7 +5,7 @@ angular.module('app')
       selected: '=',
     },
     templateUrl: 'navbar.html',
-    controller($scope, $http) {
+    controller($scope, $http, $window) {
       this.onClick = (input) => {
         console.log(input);
         const replaced = input.split(' ').join('+');
@@ -17,6 +17,7 @@ angular.module('app')
       };
       this.gohome = () => {
         this.selected = null;
+        $window.location.href = '/';
       };
       this.favorites = () => {
         $http.get('localhost:9000/favorites')
