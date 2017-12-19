@@ -25,3 +25,7 @@ body {
 .glyphicon {
   float: left;
 }
+
+.btn {
+  border-radius: 5px;
+}
