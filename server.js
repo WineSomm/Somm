@@ -98,12 +98,12 @@ app.post('/favorite', (req, res) => {
     const username = req.session.username;
     User.findOne({ username: username }, (err, entry) => {
       if (entry.favorites) {
-        console.log('favorites exist');
-        const newFavorites = entry.favorites + JSON.stringify(favorite);
-        entry.set({ favorites: newFavorites });
+        const newFavorites = JSON.parse(entry.favorites);
+        newFavorites.push(favorite);
+        entry.set({ favorites: JSON.stringify(newFavorites) });
         entry.save();
       } else {
-        entry.set({ favorites: JSON.stringify(favorite) });
+        entry.set({ favorites: JSON.stringify([favorite]) });
         entry.save((error, updated) => {
           if (error) {
             console.error(error);
@@ -117,10 +117,16 @@ app.post('/favorite', (req, res) => {
 
 app.get('/favorite', (req, res) => {
   const username = req.session.username;
-  // User.findOne({username: username}, (err, entry) => {
-  //   const splitFavorites = entry.favorites.split(' ');
-  //   res.send(splitFavorites);
-  // });
+  if (!username) {
+    res.send('You have to log in to do that');
+  }
+  User.findOne({username: username}, (err, entry) => {
+    if (entry.favorites) {
+      res.send(entry.favorites);
+    } else {
+      res.send('Looks like you haven\'t added any favorites yet!');
+    }
+  });
 });
 
 app.listen(port, () => {

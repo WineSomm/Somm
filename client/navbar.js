@@ -20,9 +20,15 @@ angular.module('app')
         $window.location.href = '/';
       };
       this.favorites = () => {
-        $http.get('localhost:9000/favorites')
+        console.log('favorite get');
+        $http.get('/favorite')
           .then((res) => {
+            console.log(res);
+            this.selected = null;
             this.wineList = res.data;
+          })
+          .catch((err) => {
+            console.error(err);
           });
       };
     },
