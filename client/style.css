@@ -1,7 +1,15 @@
 body {
   text-align: center;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .well-sm {
   text-align: left;
+}
+
+.jumbotron {
+  color: white;
+  font-family: Bungee;
+  background-image: url('https://cdn.thepennyhoarder.com/wp-content/uploads/2013/07/20213300/GettyImages-494189156.jpg');
 }
