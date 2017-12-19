@@ -15,21 +15,14 @@ angular.module('app')
             this.wineList = res.data.items;
           });
       };
-      this.signUp = () => {
-        $http({
-          method: 'GET',
-          url: 'localhost:9000/signup',
-        }).then((req, res) => {
-          console.log(res);
-        });
-      };
-      this.login = () => {
-        $http.get('localhost:9000/login', (req, res) => {
-          console.log(res);
-        });
-      };
       this.gohome = () => {
         this.selected = null;
+      };
+      this.favorites = () => {
+        $http.get('localhost:9000/favorites')
+          .then((res) => {
+            this.wineList = res.data;
+          });
       };
     },
   });

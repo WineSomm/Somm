@@ -4,10 +4,6 @@ body {
   padding-right: 100px;
 }
 
-.item-text { 
-  padding-right: 75px;
-}
-
 .well-sm {
   text-align: left;
 }
@@ -23,4 +19,8 @@ body {
   height: 75px;
   float: left;
   padding-left: 50px;
+}
+
+.glyphicon {
+  float: left;
 }

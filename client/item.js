@@ -4,7 +4,14 @@ angular.module('app')
       wine: '<',
     },
     templateUrl: 'item.html',
-    controller() {
-
+    controller($http) {
+      this.favorite = function () {
+        $http.post('localhost:9000/favorites', {
+          body: this.wine,
+        })
+          .then((res) => {
+            console.log(res);
+          });
+      };
     },
   });
