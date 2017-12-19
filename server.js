@@ -31,9 +31,13 @@ app.post('/search', (req, res) => {
   res.send('searching');
 });
 
-app.post('/signup', (req, res) => {
-  console.log(req);
-  res.send('hi');
+app.get('/signup', (req, res) => {
+  console.log('sign up');
+  res.redirect('/signup');
+});
+
+app.get('/login', (req, res) => {
+  res.redirect('/login');
 });
 
 app.listen(port, () => {
