@@ -90,7 +90,7 @@ app.post('/login', (req, res) => {
   });
 });
 
-app.post('/favorite', (req, res) => {
+app.put('/favorite', (req, res) => {
   const favorite = req.body.wine;
   if (!req.session.username) {
     res.send('You need to log in to do that');
@@ -131,7 +131,23 @@ app.get('/favorite', (req, res) => {
 });
 
 app.delete('/favorite', (req, res) => {
-  const wine = req.body.wine;
+  const id = JSON.parse(req.query.body).id;
+  const username = req.session.username;
+  User.findOne({ username: username }, (err, entry) => {
+    const newFavorites = JSON.parse(entry.favorites);
+    newFavorites.forEach((item, index) => {
+      if (item.id === id) {
+        newFavorites.splice(index, 1);
+      }
+    });
+    entry.set({ favorites: JSON.stringify(newFavorites) });
+    entry.save((error, updated) => {
+      if (error) {
+        console.error(error);
+      }
+    });
+    res.status(204).send();
+  });
 });
 
 app.listen(port, () => {

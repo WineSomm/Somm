@@ -22,10 +22,14 @@ body {
   padding-left: 50px;
 }
 
-.glyphicon {
+glyphicon {
   float: left;
 }
 
-.btn {
-  border-radius: 5px;
+.btn-primary {
+  border-radius: 0;
+}
+
+.btn-right {
+  border-radius: 0 4px 4px 0;
 }

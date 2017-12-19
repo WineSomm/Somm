@@ -7,7 +7,7 @@ angular.module('app')
     templateUrl: 'item.html',
     controller($http) {
       this.favorite = function () {
-        $http.post('/favorite', {
+        $http.put('/favorite', {
           wine: this.wine,
         })
           .then((res) => {
@@ -16,6 +16,14 @@ angular.module('app')
           .catch((err) => {
             console.error(err);
           });
+      };
+      this.unfavorite = function () {
+        $http({
+          method: 'DELETE',
+          url: '/favorite',
+          data: { wine: this.wine.Name },
+          params: { action: 'delete', body: this.wine },
+        });
       };
     },
   });
