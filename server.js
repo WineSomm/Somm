@@ -169,13 +169,6 @@ app.post('/search', (req, res) => {
       console.error(err);
       res.status(404).send();
     });
-  // $http.get('http://api.snooth.com/wines', {
-  //   params: {
-  //     akey: process.env.API_KEY,
-  //     q: replaced,
-  //     n: 25,
-  //   },
-  // })
 });
 
 app.listen(port, () => {
