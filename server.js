@@ -32,6 +32,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.set('view engine', 'jade');
+
 app.use(express.static(`${__dirname}/client`));
 
 app.use(session({
@@ -42,9 +44,12 @@ app.use(session({
 const port = process.env.PORT || 9000;
 
 app.get('/signup', (req, res) => {
-  app.use(express.static(`${__dirname}/client/signup`));
   // TODO: Make this work
+  app.use(express.static(`${__dirname}/client/signup`));
   res.end();
+  // res.render('signup', (err, html) => {
+  //   res.send(html);
+  // });
 });
 
 app.post('/signup', (req, res) => {
@@ -71,7 +76,6 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/favorite', (req, res) => {
-  console.log('hi');
   // TODO: Pull username out of req, save as favorite
   // If the user already has a session open...
   // User.findOne({username: username}, (err, entry) => {
@@ -82,6 +86,14 @@ app.post('/favorite', (req, res) => {
   // });
   // Else...
   // Redirect to login page
+});
+
+app.get('/favorite', (req, res) => {
+  // TODO: pull username out of request
+  // User.findOne({username: username}, (err, entry) => {
+  //   const splitFavorites = entry.favorites.split(' ');
+  //   res.send(splitFavorites);
+  // });
 });
 
 app.listen(port, () => {
