@@ -18,7 +18,7 @@ angular.module('app')
       this.gohome = () => {
         this.favoriteView = false;
         this.selected = null;
-        $window.location.href = '/';
+        // $window.location.href = '/';
       };
       this.favorites = function () {
         $http.get('/favorite')
