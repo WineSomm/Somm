@@ -34,12 +34,15 @@ app.use(bodyParser.json());
 
 app.set('view engine', 'jade');
 
-app.use(express.static(`${__dirname}/client`));
-
 app.use(session({
-  secret: 'a4f8071f-c873-4447-8ee2',
-  cookie: { maxAge: 2628000000 },
+  secret: 'wiiiiiine',
+  cookie: { maxAge: 3600000 },
+  saveUninitialized: true,
+  resave: true,
+  username: null,
 }));
+
+app.use(express.static(`${__dirname}/client`));
 
 const port = process.env.PORT || 9000;
 
@@ -48,7 +51,6 @@ app.get('/signup', (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
-  console.log(req.body);
   const user = new User({
     username: req.body.username,
     password: req.body.password,
@@ -61,11 +63,12 @@ app.post('/signup', (req, res) => {
         if (error) {
           console.error(error);
         }
+        req.session.username = req.body.username;
+        req.session.save();
         res.redirect('/');
       });
     }
   });
-  // TODO: Create username on session, send resposne to user
 });
 
 app.get('/login', (req, res) => {
@@ -79,22 +82,32 @@ app.post('/login', (req, res) => {
       res.writeHead(400);
       res.end('Sorry, there was a problem with your username or password');
     } else if (entry) {
+      req.session.username = req.body.username;
+      req.session.save();
       res.redirect('/');
     }
   });
 });
 
 app.post('/favorite', (req, res) => {
-  // TODO: Pull username out of req, save as favorite
-  // If the user already has a session open...
-  // User.findOne({username: username}, (err, entry) => {
-  //   const newFavorites = entry.favorites.split(' ');
-  //   newFavorites.push(favorite);
-  //   entry.favorites = newFavorites;
-  //   entry.save();
-  // });
-  // Else...
-  // Redirect to login page
+  const favorite = req.body.wine;
+  if (!req.session.username) {
+    res.send('You need to log in to do that');
+  } else {
+    const username = req.session.username;
+    User.findOne({ username: username }, (err, entry) => {
+      if (entry.favorites) {
+        const newFavorites = entry.favorites.split(' ');
+        newFavorites.push(favorite);
+        entry.favorites = newFavorites;
+        entry.save();
+      } else {
+        entry.favorites = favorite;
+        entry.save();
+      }
+      res.end();
+    });
+  }
 });
 
 app.get('/favorite', (req, res) => {

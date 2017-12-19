@@ -6,8 +6,8 @@ angular.module('app')
     templateUrl: 'item.html',
     controller($http) {
       this.favorite = function () {
-        $http.post('localhost:9000/favorites', {
-          body: this.wine,
+        $http.post('/favorite', {
+          wine: this.wine,
         })
           .then((res) => {
             console.log(res);
