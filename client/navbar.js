@@ -20,14 +20,12 @@ angular.module('app')
         $window.location.href = '/';
       };
       this.favorites = () => {
-        console.log('favorite get');
         $http.get('/favorite')
           .then((res) => {
-            console.log(res);
             this.selected = null;
             this.wineList = res.data;
-          })
-          .catch((err) => {
+          }, (err) => {
+            alert('You have to be logged in to do that');
             console.error(err);
           });
       };
