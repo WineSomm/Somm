@@ -1,7 +1,9 @@
 angular.module('app')
   .component('winePage', {
-    templateUrl: '../templates/winePage.html',
+    bindings: {
+      wine: '<',
+    },
+    templateUrl: 'winePage.html',
     controller: () => {
-      console.log('winePage');
     },
   });
