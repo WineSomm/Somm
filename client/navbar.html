@@ -1,8 +1,8 @@
 <div class="well well-sm">
   <div class="input-group">
-    <input type="text" class="form-control search" placeholder="Search for a wine">
+    <input ng-model="search" type="text" class="form-control search" placeholder="Search for a wine">
     <span class="input-group-btn">
-      <button class="btn btn-search" type="button">
+      <button class="btn btn-search" type="button" ng-click="$ctrl.onClick(search)">
       <i class="fas fa-search"></i>Search</button>
       <button type="button" class="btn btn-primary">HOME</button>
     </span>
