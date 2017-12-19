@@ -6,7 +6,7 @@
       <i class="fas fa-search"></i>Search</button>
       <a href='/'><button type="button" class="btn btn-primary nav-btn" ng-click="$ctrl.gohome()">HOME</button></a>
       <button type="button" class="btn btn-primary nav-btn" ng-click="$ctrl.favorites()">FAVORITES</button>
-      <a href='/signup.html'><button type="button" class="btn btn-primary nav-btn">SIGN UP</button></a>
+      <a ng-if="!loggedIn" href='/signup.html'><button type="button" class="btn btn-primary nav-btn">SIGN UP</button></a>
       <a href='/login.html'><button type="button" class="btn btn-primary btn-right" ng-click="$ctrl.login()">LOG IN</button></a>
     </span>
   </div>

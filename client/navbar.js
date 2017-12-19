@@ -26,9 +26,9 @@ angular.module('app')
       };
       this.favorites = function () {
         $http.get('/favorite')
-          .then((res) => {
+          .then(({ data }) => {
             this.selected = null;
-            this.wineList = res.data;
+            this.wineList = data;
             this.favoriteView = true;
           }, (err) => {
             alert('You have to be logged in to do that');
