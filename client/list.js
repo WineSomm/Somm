@@ -3,9 +3,10 @@ angular.module('app')
     bindings: {
       wineList: '<',
       selected: '=',
+      favoriteView: '=',
     },
     templateUrl: 'list.html',
-    controller() {
+    controller($http) {
       this.onClick = function (index) {
         this.selected = this.wineList[index];
       };

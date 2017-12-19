@@ -4,6 +4,7 @@
   </div>
   <div ng-if="!$ctrl.selected">
     <item 
+      favorite-view="$ctrl.favoriteView"
       ng-click="$ctrl.onClick($index)" 
       ng-repeat="wine in $ctrl.wineList" 
       wine="wine">

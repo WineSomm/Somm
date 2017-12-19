@@ -118,16 +118,20 @@ app.post('/favorite', (req, res) => {
 app.get('/favorite', (req, res) => {
   const username = req.session.username;
   if (!username) {
-    res.status(400).send('You have to log in to do that');
+    res.status(400).send('You have to be logged in to load your favorites');
   } else {
     User.findOne({username: username}, (err, entry) => {
       if (entry.favorites) {
         res.send(entry.favorites);
       } else {
-        res.send('Looks like you haven\'t added any favorites yet!');
+        res.send('Looks like you haven\'t added any favorites yet');
       }
     });
   }
+});
+
+app.delete('/favorite', (req, res) => {
+  const wine = req.body.wine;
 });
 
 app.listen(port, () => {

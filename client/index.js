@@ -4,5 +4,6 @@ angular.module('app', [])
     controller() {
       this.wineList = window.data;
       this.selected = null;
+      this.favoriteView = false;
     },
   });

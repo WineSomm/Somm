@@ -2,6 +2,7 @@ angular.module('app')
   .component('item', {
     bindings: {
       wine: '<',
+      favoriteView: '<',
     },
     templateUrl: 'item.html',
     controller($http) {
