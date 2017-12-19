@@ -5,5 +5,5 @@
   <div>Varietal: {{$ctrl.wine.Varietal}}</div>
   <div>Vintage: {{$ctrl.wine.vintage}}</div>
   <div>{{$ctrl.specifics}}</div>
-  <div ng-if='$ctrl.varietalData'>{{$ctrl.varietalData}}</div>
+  <div ng-if='$ctrl.varietalData[$ctrl.wine.Varietal]'>Probable tasting notes: {{$ctrl.varietalData[$ctrl.wine.Varietal]}}</div>
 </div>

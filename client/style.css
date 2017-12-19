@@ -13,6 +13,7 @@ body {
   text-shadow: 3px 2px #722f37;
   font-family: Bungee;
   background-image: url('https://cdn.thepennyhoarder.com/wp-content/uploads/2013/07/20213300/GettyImages-494189156.jpg');
+  border-radius: 5px;
 }
 
 .wine-bottle {
