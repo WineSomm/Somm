@@ -36,7 +36,7 @@ app.set('view engine', 'jade');
 
 app.use(session({
   secret: 'wiiiiiine',
-  cookie: { maxAge: 3600000 },
+  cookie: { maxAge: 360000000 },
   saveUninitialized: true,
   resave: true,
   username: null,
