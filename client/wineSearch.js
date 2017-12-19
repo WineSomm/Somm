@@ -1,6 +1,6 @@
 angular.module('app')
   .component('wineSearch', {
-    templateUrl: 'client/wineSearch.html',
+    templateUrl: 'wineSearch.html',
     controller: () => {
       console.log('wineSearch');
     },

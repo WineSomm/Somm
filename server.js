@@ -16,18 +16,10 @@ app.listen(port, () => {
   console.log(`App is listening on ${port}`);
 });
 
-app.get('/', (req, res) => {
-  res.render('indexPage');
-});
-
 app.get('/search', (req, res) => {
   res.send('hi');
 });
 
 app.post('/search', (req, res) => {
   res.send('searching');
-});
-
-app.get('/*', (req, res) => {
-  res.redirect('/');
 });
