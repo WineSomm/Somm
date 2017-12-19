@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 angular.module('app')
   .component('navbar', {
     bindings: {
@@ -12,7 +14,7 @@ angular.module('app')
         const replaced = input.split(' ').join('+');
         $http.get('http://api.snooth.com/wines', {
           params: {
-            akey: process.env.API_KEY || window.akey,
+            akey: process.env.API_KEY,
             q: replaced,
             n: 25,
           },
