@@ -8,14 +8,13 @@ angular.module('app')
     templateUrl: 'navbar.html',
     controller($scope, $http, $window) {
       this.onClick = (input) => {
-        this.favoriteView = false;
         const replaced = input.split(' ').join('+');
-        console.log('searching');
         $http.post('/search', {
           wine: replaced,
         })
           .then((res) => {
-            console.log(res);
+            this.selected = null;
+            this.favoriteView = false;
             this.wineList = res.data;
           });
       };
