@@ -10,6 +10,10 @@ angular.module('app')
           .then((res) => {
             $window.location.href = '/';
             alert('You are now logged in');
+          })
+          .catch((err) => {
+            console.error(err);
+            alert('Sorry, there was a problem with your username or password.');
           });
       };
     },

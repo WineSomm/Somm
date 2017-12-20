@@ -13,6 +13,7 @@ angular.module('app')
           })
           .catch((err) => {
             console.error(err);
+            alert('Sorry, there was a problem. Please try signing up again.');
           });
       };
     },
