@@ -38,3 +38,8 @@ glyphicon {
   color: #722f37;
   cursor: pointer;
 }
+
+.btn-primary {
+  background-color: #722f37;
+  border-color: purple;
+}
