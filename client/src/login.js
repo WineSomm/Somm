@@ -13,7 +13,7 @@ angular.module('app')
           })
           .catch((err) => {
             console.error(err);
-            alert('Sorry, there was a problem with your username or password.');
+            alert('Sorry, there was a problem with your username or password. Remember, they are case sensitive');
           });
       };
     },
