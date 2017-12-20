@@ -11,7 +11,7 @@ angular.module('app')
           wine: this.wine,
         })
           .then((res) => {
-            console.log(res);
+            console.log('Success!', res);
           })
           .catch((err) => {
             console.error(err);

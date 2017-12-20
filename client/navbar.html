@@ -1,12 +1,12 @@
 <div class="well well-sm navbar">
   <div class="input-group">
-    <input ng-model="search" type="text" class="form-control search" placeholder="Search for a wine">
+    <input ng-model="search" ng-keydown="$ctrl.onKeyPress($event, search)" type="text" class="form-control search" placeholder="Search for a wine">
     <span class="input-group-btn">
       <button class="btn btn-search" type="button" ng-click="$ctrl.onClick(search)">
       <i class="fas fa-search"></i>Search</button>
       <a href='/'><button type="button" class="btn btn-primary nav-btn" ng-click="$ctrl.gohome()">HOME</button></a>
       <button type="button" class="btn btn-primary nav-btn" ng-click="$ctrl.favorites()">FAVORITES</button>
-      <a ng-if="!loggedIn" href='/signup.html'><button type="button" class="btn btn-primary nav-btn">SIGN UP</button></a>
+      <a href='/signup.html'><button type="button" class="btn btn-primary nav-btn">SIGN UP</button></a>
       <a href='/login.html'><button type="button" class="btn btn-primary btn-right" ng-click="$ctrl.login()">LOG IN</button></a>
     </span>
   </div>

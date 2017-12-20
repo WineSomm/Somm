@@ -18,6 +18,19 @@ angular.module('app')
             this.wineList = res.data;
           });
       };
+      this.onKeyPress = ($event, search) => {
+        if ($event.keyCode === 13) {
+          const replaced = search.split(' ').join('+');
+          $http.post('/search', {
+            wine: replaced,
+          })
+            .then((res) => {
+              this.selected = null;
+              this.favoriteView = false;
+              this.wineList = res.data;
+            });
+        }
+      };
       this.gohome = () => {
         this.favoriteView = false;
         this.selected = null;

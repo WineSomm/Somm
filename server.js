@@ -162,7 +162,6 @@ app.post('/search', (req, res) => {
     },
   })
     .then((response) => {
-      console.log(response.data.wines);
       res.status(200).send(response.data.wines);
     })
     .catch((err) => {
