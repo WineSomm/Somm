@@ -33,3 +33,8 @@ glyphicon {
 .btn-right {
   border-radius: 0 4px 4px 0;
 }
+
+.highlight { 
+  color: #722f37;
+  cursor: pointer;
+}
