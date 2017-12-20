@@ -9,6 +9,7 @@ angular.module('app')
         })
           .then((res) => {
             $window.location.href = '/';
+            alert('You are now logged in');
           });
       };
     },
