@@ -9,6 +9,7 @@ angular.module('app')
     controller($scope, $http, $window) {
       this.onClick = (input) => {
         const replaced = input.split(' ').join('+');
+        $scope.search = '';
         $http.post('/search', {
           wine: replaced,
         })
@@ -21,6 +22,7 @@ angular.module('app')
       this.onKeyPress = ($event, search) => {
         if ($event.keyCode === 13) {
           const replaced = search.split(' ').join('+');
+          $scope.search = '';
           $http.post('/search', {
             wine: replaced,
           })
