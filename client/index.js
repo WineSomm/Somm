@@ -1,6 +1,6 @@
 angular.module('app', [])
   .component('homepage', {
-    templateUrl: 'homepage.html',
+    templateUrl: 'templates/homepage.html',
     controller() {
       this.wineList = this.wineList || window.data;
       this.selected = null;

@@ -4,7 +4,7 @@ angular.module('app')
       wine: '<',
       favoriteView: '<',
     },
-    templateUrl: 'item.html',
+    templateUrl: 'templates/item.html',
     controller($http) {
       this.favorite = function () {
         $http.put('/favorite', {

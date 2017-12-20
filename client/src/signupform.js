@@ -1,14 +1,17 @@
 angular.module('app')
-  .component('loginform', {
-    templateUrl: 'loginform.html',
+  .component('signupform', {
+    templateUrl: 'templates/signupform.html',
     controller($http, $window) {
       this.onClick = (username, password) => {
-        $http.post('/login', {
+        $http.post('/signup', {
           username: username,
           password: password,
         })
           .then((res) => {
             $window.location.href = '/';
+          })
+          .catch((err) => {
+            console.error(err);
           });
       };
     },

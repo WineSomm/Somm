@@ -3,7 +3,7 @@ angular.module('app')
     bindings: {
       wine: '<',
     },
-    templateUrl: 'winePage.html',
+    templateUrl: 'templates/winePage.html',
     controller() {
       this.varietalData = window.varietalData;
     },

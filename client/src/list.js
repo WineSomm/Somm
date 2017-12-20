@@ -5,7 +5,7 @@ angular.module('app')
       selected: '=',
       favoriteView: '=',
     },
-    templateUrl: 'list.html',
+    templateUrl: 'templates/list.html',
     controller($http) {
       this.onClick = function (index) {
         this.selected = this.wineList[index];

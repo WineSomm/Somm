@@ -5,7 +5,7 @@ angular.module('app')
       selected: '=',
       favoriteView: '=',
     },
-    templateUrl: 'navbar.html',
+    templateUrl: 'templates/navbar.html',
     controller($scope, $http, $window) {
       this.onClick = (input) => {
         const replaced = input.split(' ').join('+');
