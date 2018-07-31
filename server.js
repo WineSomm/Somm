@@ -1,16 +1,14 @@
 const express = require('express');
-
-const bodyParser = require('body-parser');
-
+const { json, urlencoded } = require('body-parser');
 const axios = require('axios');
-
 const session = require('express-session');
-
+const { DB_TOKEN } = require('./database-config');
+const { API_TOKEN } = require('./api-config');
 require('dotenv').config();
 
 const mongoose = require('mongoose');
 
-const MongoDb = 'mongodb://preston:Catharine73@ds161446.mlab.com:61446/somm';
+const MongoDb = DB_TOKEN;
 
 mongoose.connect(MongoDb, {
   useMongoClient: true,
@@ -31,8 +29,8 @@ const userSchema = mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(urlencoded({ extended: false }));
+app.use(json());
 
 app.set('view engine', 'jade');
 
@@ -156,7 +154,7 @@ app.post('/search', (req, res) => {
   const query = req.body.wine;
   axios.get('http://api.snooth.com/wines', {
     params: {
-      akey: process.env.API_KEY,
+      akey: API_TOKEN,
       q: query,
       n: 25,
     },
