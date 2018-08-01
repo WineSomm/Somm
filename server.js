@@ -168,6 +168,11 @@ app.post('/search', (req, res) => {
     });
 });
 
+app.post('/online', (req, res) => {
+  // res.sendStatus(200);
+  res.redirect('/');
+})
+
 app.listen(port, () => {
   console.log(`App is listening on ${port}`);
 });
