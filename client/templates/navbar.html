@@ -1,48 +1,48 @@
-C<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand"><img height=30px src="../photos/small-logo.png"></a>
-      </div>
-  
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="/" ng-click="$ctrl.gohome()">Home</a></li>
-          <li><a ng-click="$ctrl.favorites()">Favorites <span class="sr-only">(current)</span></a></li>
-          <li><a href="/signup.html" ng-click="$ctrl.gohome()">Create Account</a></li>
-          <!-- TODO: NG CLICK TO PAIRINGS COMPONENT -->
-          <li><a href='/pairings.html'>Food Pairings</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop Wines<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <!-- TODO: NG CLICK TO BUY COMPONENT -->
-              <li><a href='/buy.html'>Find Online</a></li>
-              <li role="separator" class="divider"></li>
-              <!-- TODO: NG CLICK TO LOCAL COMPONENT -->
-              <li><a href='/local.html'>Wines Near Me</a></li>
-            </ul>
-          </li>
-          <li><a href="/login.html" ng-click="$ctrl.login()">Login</a></li>
-          <!-- TODO: NG CLICK TO DESTROY SESSION -->
-          <li><a href='/'>Logout</a></li>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand"><img height=30px src="../photos/small-logo.png"></a>
+    </div>
 
-          <form class="navbar-form navbar-left">
-              <div class="form-group">
-                  <input ng-model="search" ng-keydown="$ctrl.onKeyPress($event, search)" type="text" class="form-control search" placeholder="Search for a wine">
-                <!-- <input type="text" class="form-control" placeholder="Search"> -->
-              </div>
-              <button class="btn btn-default" type="submit" ng-click="$ctrl.onClick(search)">
-                  <i class="fas fa-search"></i>Search</button>
-              <!-- <button type="submit" class="btn btn-default">Submit</button> -->
-            </form>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/" ng-click="$ctrl.gohome()">Home</a></li>
+        <li><a ng-click="$ctrl.favorites()">Favorites <span class="sr-only">(current)</span></a></li>
+        <li><a href="/signup.html" ng-click="$ctrl.gohome()">Create Account</a></li>
+        <!-- TODO: NG CLICK TO PAIRINGS COMPONENT -->
+        <li><a href='/pairings.html'>Food Pairings</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop Wines<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!-- TODO: NG CLICK TO BUY COMPONENT -->
+            <li><a href='../buy.html'>Find Online</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- TODO: NG CLICK TO LOCAL COMPONENT -->
+            <li><a href='../local.html'>Wines Near Me</a></li>
+          </ul>
+        </li>
+        <li><a href="/login.html" ng-click="$ctrl.login()">Login</a></li>
+        <!-- TODO: NG CLICK TO DESTROY SESSION -->
+        <li><a href='/'>Logout</a></li>
+
+        <form class="navbar-form navbar-left">
+            <div class="form-group">
+                <input ng-model="search" ng-keydown="$ctrl.onKeyPress($event, search)" type="text" class="form-control search" placeholder="Search for a wine">
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            </div>
+            <button class="btn btn-default" type="submit" ng-click="$ctrl.onClick(search)">
+                <i class="fas fa-search"></i>Search</button>
+            <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+          </form>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
