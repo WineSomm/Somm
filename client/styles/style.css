@@ -2,6 +2,7 @@ body {
   text-align: center;
   padding-left: 100px;
   padding-right: 100px;
+  background-color: #482961;
 }
 
 .well-sm {
@@ -12,7 +13,7 @@ body {
   color: white;
   text-shadow: 3px 2px #722f37;
   font-family: Bungee;
-  background-image: url('https://cdn.thepennyhoarder.com/wp-content/uploads/2013/07/20213300/GettyImages-494189156.jpg');
+  background-image: src('../photos/large-logo.png');
   border-radius: 5px;
 }
 
@@ -42,4 +43,8 @@ glyphicon {
 .btn-primary {
   background-color: #722f37;
   border-color: #5B0707;
+}
+
+.navbar-brand {
+  padding-bottom: 15px;
 }
