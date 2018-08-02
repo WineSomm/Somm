@@ -173,6 +173,27 @@ app.post('/online', (req, res) => {
   res.redirect('/');
 })
 
+app.get('/local', (req, res) => {
+  axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${MAPS_TOKEN}`, {})
+  .then((response) => {
+  // console.log(response.data, 'r.d.l. in first geo response');
+  // res.status(200).send(response.data.location);
+  return response.data.location;
+  })
+  .then((location) => {
+  // console.log(location, 'location in returned promise');
+  return axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${MAPS_TOKEN}`)
+  })
+  .then((response) => {
+    // console.log(response, 'r.d in places response')
+    console.log(response.data.candidates[0].geometry.location);
+    console.log(response.data);      
+    return response.data;
+  })
+  .then(response => res.send(response))
+  .catch(err => console.error(err));
+});
+
 app.listen(port, () => {
   console.log(`App is listening on ${port}`);
 });
