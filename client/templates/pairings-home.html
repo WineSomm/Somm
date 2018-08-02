@@ -3,8 +3,9 @@
         <a href="index.html" class="navbar-brand"><img height=150px src="../photos/large-logo.png"></a>
     </div>
     <div class="main">
-        <pairingsform ng-show="$ctrl.view === 'form'"></pairingsform>
-        <winerec ng-show="$ctrl.view === 'wine'"></winerec>
-        <mealrec ng-show="$ctrl.view === 'meal'"></mealrec>
+        <pairingsform>
+        <!-- <pairingsform ng-if="$ctrl.view === 'form'" view="$ctrl.view" changeview="$ctrl.changeview" 
+        winerecomendations="$ctrl.wineRecomendations" mealrecomendations="$ctrl.mealrecomendations"> -->
+        </pairingsform>
     </div>
 </div>
