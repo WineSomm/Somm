@@ -2,34 +2,36 @@
         <div class="row">
             <div class="col-md-12">
                 <h3 style="color: white; font-style: italic">
-                    Our recommendations for you:
+                    Our recommendations for {{$ctrl.mealchosen}} foods:
                 </h3>
             </div>
         </div>
+        <br>
+        <br>
         <ul>
             <li ng-repeat="wine in $ctrl.winerecomendations" wine="wine">
-                <div class="row">
+                <div class="row" style="background-color: white">
                     <div class="col-md-4">
-                        <img alt="Bootstrap Image Preview" src="{{wine.image}}" />
+                        <img alt="Bootstrap Image Preview" src="{{wine.image}}" align="middle"/>
                     </div>
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-body">
                                 {{wine.name}}
                             </div>
                             <div class="card-body">
-                                <div>{{wine.type}}</div>
-                                <div>{{wine.varietal}}</div>
-                                <div>{{wine.vintage}}</div>
+                                <div>Type: {{wine.type}}</div>
+                                <div>Varietal: {{wine.varietal}}</div>
+                                <div>Vintage: {{wine.vintage}}</div>
                             </div>
-                            <div class="card-footer">
-                                <div>{{wine.winery}}</div>
-                                <div>{{wine.type}}</div>
+                            <div class="card-body">
+                                <div>Winery: {{wine.winery}}</div>
+                                <div>{{wine.region}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <br>
             </li>
         </ul>
     </div>
-<pre>{{$ctrl.winerecomendations}}</pre>
