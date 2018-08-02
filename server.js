@@ -195,6 +195,30 @@ app.get('/local', (req, res) => {
   .catch(err => console.error(err));
 });
 
+app.post('/local', (req, res) => {
+  axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${MAPS_TOKEN}`, {})
+  .then((response) => {
+  return response.data.location;
+  })
+  .then((location) => {
+  return axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${MAPS_TOKEN}`)
+  })
+  .then((response) => {
+    console.log(response.data.candidates[0].photos[0].photo_reference);      
+    return response.data.candidates[0].photos[0].photo_reference;
+  })
+  .then((photoRef) => {
+    return axios.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoRef}&key=${MAPS_TOKEN}`)
+  })
+  .then((response) => {
+    return response.data;
+  })
+  .then((pic) => {
+    res.send(pic);
+  })
+  .catch(err => console.error(err));
+})
+
 app.listen(port, () => {
   console.log(`App is listening on ${port}`);
 });
