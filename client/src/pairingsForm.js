@@ -1,7 +1,17 @@
 angular.module('app')
   .controller('PairingsCtrl', function($http) {
-    this.wineSelection = {};
-    this.mealSelection = {};
+    this.view = 'form';
+    this.changeview = function(viewChoice) {
+      this.view = viewChoice;
+    };
+
+    this.winerecomendations;
+    this.mealrecomendations;
+    this.wineselection = {};
+    this.mealselection = {};
+
+    this.mealchosen;
+
     this.getmealrec = (wineChoice) => {};
 
     this.getwinerec = (mealChoice) => {
@@ -25,6 +35,7 @@ angular.module('app')
       if (mealChoice === 'spicy') {
         wine = 'Off-Dry Riesling';
       }
+      this.mealchosen = mealChoice;
       //TODO: need to test and decide how to pass on results
       $http.post('/search', { wine, hits: 10 })
         .then((res) => {
@@ -38,12 +49,12 @@ angular.module('app')
     };
 })
   .component('pairingsform', {
-    bindings: {
-      view: '<',
-      changeview: '<',
-      winerecomendations: '<',
-      mealrecomendations: '<'
-    },
+    // bindings: {
+    //   view: '<',
+    //   changeview: '<',
+    //   winerecomendations: '<',
+    //   mealrecomendations: '<'
+    // },
     templateUrl: '../templates/pairingsForm.html',
     controller: 'PairingsCtrl'
   });

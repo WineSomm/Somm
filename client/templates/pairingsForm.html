@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-if="$ctrl.view === 'form'">
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
@@ -109,7 +109,7 @@
                 </div>
                 <div class="col-md-2">
                 </div>
-            </div>
+            </div>           
     </div>
-<!-- <pre>{{$ctrl.getwinerec}}</pre> -->
-<!-- <pre>{{$ctrl.mealSelection.mealType}}</pre> -->
+    <winerec ng-if="$ctrl.view === 'wine'" winerecomendations="$ctrl.winerecomendations" mealchosen="$ctrl.mealchosen"></winerec>
+    <mealrec ng-if="$ctrl.view === 'meal'" mealrecomendations="$ctrl.mealrecomendations"></mealrec>
