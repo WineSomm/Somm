@@ -4,6 +4,7 @@ const axios = require('axios');
 const session = require('express-session');
 const { DB_TOKEN } = require('./database-config');
 const { API_TOKEN } = require('./api-config');
+const { MAPS_TOKEN } = require('./maps-config');
 require('dotenv').config();
 
 const mongoose = require('mongoose');
