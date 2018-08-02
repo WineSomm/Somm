@@ -19,22 +19,10 @@ angular.module('app')
           this.open = res.data.candidates[0].opening_hours.open_now;
           this.price = res.data.candidates[0].price_level;
           this.url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBd_Xqb8heicTe-g_UALlO1131GqyoZNLw&q=${this.lat},${this.lng}`;
-          this.url2 = `https://www.google.com/maps/embed/v1/view
-          ?key=AIzaSyBd_Xqb8heicTe-g_UALlO1131GqyoZNLw&q
-          &center=${this.lat},${this.lng}
-          &zoom=18
-          &maptype=roadmap`
         })
       }
-      this.onClick = () => {
-        $http.post('/local', {})
-          .then((res) => {
-            alert('Your wine stores will be coming soon.');
-          })
-          .catch((err) => {
-            console.error(err);
-            alert('Sorry, there was a problem getting your local wine stores. Please try again.');
-          });
+      this.onClick = ($window) => {
+        $window.location.href = '../more-local.html'
       };
     },
   });
