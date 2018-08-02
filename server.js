@@ -156,7 +156,7 @@ app.post('/search', (req, res) => {
     params: {
       akey: API_TOKEN,
       q: query,
-      n: 25,
+      n: req.body.hits || 25,
     },
   })
     .then((response) => {
