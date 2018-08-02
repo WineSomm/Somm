@@ -1,128 +1,113 @@
 <div class="container-fluid">
-        <div class="logo">
-            <a href="index.html" class="navbar-brand"><img height=150px src="../photos/large-logo.png"></a>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h2 style="color: white">
+                        Build your perfect pairing
+                    </h2>
+                </div>
+            </div>
         </div>
         <br>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="page-header">
-                <h2 style="color: white">
-                    Build your perfect pairing
-                </h2>
+        <div class="row">
+            <div class="col-md-12">
+                <h4 style="color: white; font-style: italic">
+                    Choose a wine or meal taste profile:
+                </h4>
             </div>
         </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-12">
-            <h4 style="color: white; font-style: italic">
-                Choose a wine or meal taste profile:
-            </h4>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <h5 class="card-header">
-                        Wine Preferences
-                    </h5>
-                    <div class="card-body">
+        <br>
+        <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <h5 class="card-header">
+                            Wine Preferences
+                        </h5>
+                        <div class="card-body">
+                                    <div class="card-body">
+                                            <label>
+                                                <input class="radio" type="radio" name="wineType" value="bitter" ng-model="$ctrl.wineSelection.wineType"/> Bitter
+                                            </label>
+                                                <br>
+                                            <label>
+                                                <input class="radio" type="radio" name="wineType" value="dessert" ng-model="$ctrl.wineSelection.wineType"/> Dessert Wine
+                                            </label>
+                                                <br>
+                                            <label>
+                                                <input class="radio" type="radio" name="wineType" value="meaty" ng-model="$ctrl.wineSelection.wineType"/> Meaty
+                                            </label>
+                                                <br>
+                                            <label>
+                                                <input class="radio" type="radio" name="wineType" value="salty" ng-model="$ctrl.wineSelection.wineType"/> Salty
+                                            </label>
+                                                <br>
+                                            <label>
+                                                <input class="radio" type="radio" name="wineType" value="savoury" ng-model="$ctrl.wineSelection.wineType"/> Savoury
+                                            </label>
+                                                <br>
+                                            <label>
+                                                <input class="radio" type="radio" name="wineType" value="sour" ng-model="$ctrl.wineSelection.wineType"/> Sour
+                                            </label>
+                                            <br>
+                                            <label>
+                                                <input class="radio" type="radio" name="wineType" value="spicy" ng-model="$ctrl.wineSelection.wineType"/> Spicy
+                                            </label>
+                                    </div>
+                        </div>
+                        <div class="card-footer">
+                            <a>
+                                <button type="submit" class="btn btn-primary">
+                                    Submit
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <h5 class="card-header">
+                            Meal Preferences
+                        </h5>
+                        <div class="card-body">
                                 <div class="card-body">
                                         <label>
-                                            <input type="radio"/> Bitter
+                                            <input class="radio" type="radio" name="mealType" value="barbeque" ng-model="$ctrl.mealSelection.mealType"/> Barbeque Sauces
                                         </label>
                                             <br>
                                         <label>
-                                            <input type="radio"/> Dessert Wine
+                                            <input class="radio" type="radio" name="mealType" value="dessert" ng-model="$ctrl.mealSelection.mealType"/> Dessert
                                         </label>
                                             <br>
                                         <label>
-                                            <input type="radio"/> Meaty
+                                            <input class="radio" type="radio" name="mealType" value="red-meat" ng-model="$ctrl.mealSelection.mealType"/> Red Meat
                                         </label>
                                             <br>
                                         <label>
-                                            <input type="radio"/> Salty
+                                            <input class="radio" type="radio" name="mealType" value="salty" ng-model="$ctrl.mealSelection.mealType"/> Salty
                                         </label>
                                             <br>
                                         <label>
-                                            <input type="radio"/> Savoury
+                                            <input class="radio" type="radio" name="mealType" value="seafood" ng-model="$ctrl.mealSelection.mealType"/> Seafood
                                         </label>
                                             <br>
                                         <label>
-                                            <input type="radio"/> Sour
-                                        </label>
-                                        <br>
-                                        <label>
-                                            <input type="radio"/> Spicy
+                                            <input class="radio" type="radio" name="mealType" value="spicy" ng-model="$ctrl.mealSelection.mealType"/> Spicy
                                         </label>
                                 </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/src/pairings.js">
-                            <button type="submit" class="btn btn-primary">
-                                Submit
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <h5 class="card-header">
-                        Meal Preferences
-                    </h5>
-                    <div class="card-body">
-                            <div class="card-body">
-                                    <label>
-                                        <input type="radio"/> Barbeque Sauces
-                                    </label>
-                                        <br>
-                                    <label>
-                                        <input type="radio"/> Dessert
-                                    </label>
-                                        <br>
-                                    <label>
-                                        <input type="radio"/> Red Meat
-                                    </label>
-                                        <br>
-                                    <label>
-                                        <input type="radio"/> Salty
-                                    </label>
-                                        <br>
-                                    <label>
-                                        <input type="radio"/> Seafood
-                                    </label>
-                                        <br>
-                                    <label>
-                                        <input type="radio"/> Spicy
-                                    </label>
-                                    <br>
-                                    <label style="font-style: italic">
-                                        <input type="checkbox"/> Glutten-free
-                                    </label>
-                                    <br>
-                                    <label style="font-style: italic">
-                                        <input type="checkbox"/> Low Carb
-                                    </label>
-                                    <br>
-                                    <label style="font-style: italic">
-                                        <input type="checkbox"/> Sugar-free
-                                    </label>
-                            </div>
-                    </div>
-                    <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">
-                                Submit
-                            </button>
+                        </div>
+                        <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">
+                                    Submit
+                                </button>
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-2">
+                </div>
             </div>
-            <div class="col-md-2">
-            </div>
-        </div>
-</div>
+    </div>
+    <pre>{{$ctrl}}</pre>

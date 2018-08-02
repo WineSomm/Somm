@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <div class="logo">
+        <a href="index.html" class="navbar-brand"><img height=150px src="../photos/large-logo.png"></a>
+    </div>
+    <div class="main">
+        <pairingsform ng-if="$ctrl.view === 'form'"></pairingsform>
+        <winerec ng-if="$ctrl.view === 'wine'"></winerec>
+        <mealrec ng-if="$ctrl.view === 'meal'"></mealrec>
+    </div>
+</div>
+<pre>{{$ctrl}}</pre>
