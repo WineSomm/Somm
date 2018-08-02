@@ -1,3 +1,4 @@
+const { MAPS_TOKEN } = require('../../maps-config');
 angular.module('app')
   .component('local', {
     templateUrl: 'templates/local.html',
@@ -18,7 +19,7 @@ angular.module('app')
           this.photos = res.data.candidates[0].photos;
           this.open = res.data.candidates[0].opening_hours.open_now;
           this.price = res.data.candidates[0].price_level;
-          this.url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBd_Xqb8heicTe-g_UALlO1131GqyoZNLw&q=${this.lat},${this.lng}`;
+          this.url = `https://www.google.com/maps/embed/v1/place?key=${MAPS_TOKEN}&q=${this.lat},${this.lng}`;
           this.url2 = `https://www.google.com/maps/embed/v1/view
           ?key=AIzaSyBd_Xqb8heicTe-g_UALlO1131GqyoZNLw&q
           &center=${this.lat},${this.lng}
