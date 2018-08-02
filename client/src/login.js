@@ -9,7 +9,7 @@ angular.module('app')
         })
           .then((res) => {
             $window.location.href = '/';
-            alert('You are now logged in');
+            alert('Welcome back!');
           })
           .catch((err) => {
             console.error(err);
