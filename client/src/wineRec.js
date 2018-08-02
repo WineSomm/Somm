@@ -4,7 +4,7 @@ angular.module('app')
     })
     .component('winerec', {
         bindings: {
-            winerecomendations: '<',
+            winerecommendations: '<',
             mealchosen: '<'
         },
         templateUrl: '../templates/wine-rec.html',
