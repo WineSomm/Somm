@@ -51,15 +51,11 @@ glyphicon {
 }
 
 .highlight { 
-  color: #722f37;
+  color: #482961;
   cursor: pointer;
 }
 
 .btn-primary {
   background-color: #722f37;
   border-color: #5B0707;
-}
-
-.navbar-brand {
-  padding-bottom: 15px;
 }
