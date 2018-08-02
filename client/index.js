@@ -6,4 +6,10 @@ angular.module('app', [])
       this.selected = null;
       this.favoriteView = false;
     },
+  })
+  .config(function($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+      'self',
+      'https://www.google.com/**'
+    ]);
   });
