@@ -58,7 +58,7 @@
                         </div>
                         <div class="card-footer">
                             <a>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" ng-click="$ctrl.changeview('meal')">
                                     Submit
                                 </button>
                             </a>
@@ -75,7 +75,7 @@
                         <div class="card-body">
                                 <div class="card-body">
                                         <label>
-                                            <input class="radio" type="radio" name="mealType" value="barbeque" ng-model="$ctrl.mealSelection.mealType"/> Barbeque Sauces
+                                            <input class="radio" type="radio" name="mealType" value="barbeque" ng-model="$ctrl.mealSelection.mealType"/> Barbeque
                                         </label>
                                             <br>
                                         <label>
@@ -100,7 +100,8 @@
                                 </div>
                         </div>
                         <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" 
+                                    ng-click="$ctrl.changeview('wine'); $ctrl.getwinerec($ctrl.mealSelection.mealType)">
                                     Submit
                                 </button>
                         </div>
@@ -110,4 +111,5 @@
                 </div>
             </div>
     </div>
-    <pre>{{$ctrl}}</pre>
+<!-- <pre>{{$ctrl.getwinerec}}</pre> -->
+<!-- <pre>{{$ctrl.mealSelection.mealType}}</pre> -->
