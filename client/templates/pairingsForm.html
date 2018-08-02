@@ -36,7 +36,7 @@
                                             </label>
                                                 <br>
                                             <label>
-                                                <input class="radio" type="radio" name="wineType" value="meaty" ng-model="$ctrl.wineSelection.wineType"/> Meaty
+                                                <input class="radio" type="radio" name="wineType" value="red-meat" ng-model="$ctrl.wineSelection.wineType"/> Meaty
                                             </label>
                                                 <br>
                                             <label>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="card-footer">
                             <a>
-                                <button type="submit" class="btn btn-primary" ng-click="$ctrl.changeview('meal')">
+                                <button type="submit" class="btn btn-primary" ng-click="$ctrl.changeview('meal'); $ctrl.getmealrec($ctrl.wineSelection.wineType)">
                                     Submit
                                 </button>
                             </a>
@@ -87,7 +87,7 @@
                                         </label>
                                             <br>
                                         <label>
-                                            <input class="radio" type="radio" name="mealType" value="salty" ng-model="$ctrl.mealSelection.mealType"/> Salty
+                                            <input class="radio" type="radio" name="mealType" value="salted" ng-model="$ctrl.mealSelection.mealType"/> Salty
                                         </label>
                                             <br>
                                         <label>
@@ -111,5 +111,7 @@
                 </div>
             </div>           
     </div>
-    <winerec ng-if="$ctrl.view === 'wine'" winerecomendations="$ctrl.winerecomendations" mealchosen="$ctrl.mealchosen"></winerec>
-    <mealrec ng-if="$ctrl.view === 'meal'" mealrecomendations="$ctrl.mealrecomendations"></mealrec>
+    <winerec ng-if="$ctrl.view === 'wine'" winerecommendations="$ctrl.winerecommendations" 
+        mealchosen="$ctrl.mealchosen"></winerec>
+    <mealrec ng-if="$ctrl.view === 'meal'" mealrecommendations="$ctrl.mealrecommendations" 
+        winechosen="$ctrl.winechosen" recipe="$ctrl.recipe" changerecipe="$ctrl.changerecipe"></mealrec>
