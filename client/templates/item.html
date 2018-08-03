@@ -2,7 +2,7 @@
   <div ng-if="!$ctrl.favoriteView" class="well">
     <div class="row">
       <img class="wine-bottle" ng-class="{highlight: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-src={{$ctrl.wine.image}} />
-      <h4 class="item-text" ng-class="{highlight: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">{{$ctrl.wine.name}}</h4>
+      <h4 class="item-text" ng-class="{highlight: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false"><b>{{$ctrl.wine.name}}</b></h4>
       <button type="button" class="btn btn-default btn-md"><span class="glyphicon glyphicon-star" aria-hidden="true" ng-click="$ctrl.favorite()"> Favorite</span></button>
     </div>
   </div>
