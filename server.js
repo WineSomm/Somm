@@ -3,7 +3,7 @@ const { json, urlencoded } = require('body-parser');
 const axios = require('axios');
 const session = require('express-session');
 const { DB_TOKEN } = require('./database-config');
-const { API_TOKEN } = require('./api-config');
+const { API_TOKEN, EDAMAM_TOKEN, EDAMAM_ID } = require('./api-config');
 const { MAPS_TOKEN } = require('./maps-config');
 require('dotenv').config();
 
@@ -169,21 +169,33 @@ app.post('/search', (req, res) => {
     });
 });
 
+app.post('/recipes', (req, res) => {
+  const query = req.body.mealPreference;
+  axios.get(`https://api.edamam.com/search?q=${query}&app_id=${EDAMAM_ID}&app_key=${EDAMAM_TOKEN}`)
+    .then((response) => {
+      res.status(200).send(response.data.hits);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(404);
+    });
+});
+
+app.post('/online', (req, res) => {
+  res.redirect('/');
+})
+
 app.get('/local', (req, res) => {
   axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${MAPS_TOKEN}`, {})
   .then((response) => {
-  // console.log(response.data, 'r.d.l. in first geo response');
-  // res.status(200).send(response.data.location);
   return response.data.location;
   })
   .then((location) => {
-  // console.log(location, 'location in returned promise');
   return axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${MAPS_TOKEN}`)
   })
   .then((response) => {
-    // console.log(response, 'r.d in places response')
-    console.log(response.data.candidates[0].geometry.location);
-    console.log(response.data);      
+    // console.log(response.data.candidates[0].geometry.location);
+    // console.log(response.data);      
     return response.data;
   })
   .then(response => res.send(response))

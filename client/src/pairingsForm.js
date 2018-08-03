@@ -5,17 +5,28 @@ angular.module('app')
       this.view = viewChoice;
     };
 
-    this.winerecomendations;
-    this.mealrecomendations;
+    this.winerecommendations;
+    this.mealrecommendations;
     this.wineselection = {};
     this.mealselection = {};
 
     this.mealchosen;
+    this.winechosen;
 
-    this.getmealrec = (wineChoice) => {};
+    this.getmealrec = (wineChoice) => {
+      this.winechosen = wineChoice;
+      $http.post('/recipes', { mealPreference: wineChoice })
+        .then((res) => {
+          console.log(res.data);
+          this.mealrecommendations = res.data;
+        })
+        .catch((err) => {
+          console.error(err);
+          alert('Sorry, there was a problem fetching your recommendations. Please try again later.');
+        });
+    };
 
     this.getwinerec = (mealChoice) => {
-      console.log('click');
       let wine;
       if (mealChoice === 'barbeque') {
         wine = 'Shiraz';
@@ -36,25 +47,17 @@ angular.module('app')
         wine = 'Off-Dry Riesling';
       }
       this.mealchosen = mealChoice;
-      //TODO: need to test and decide how to pass on results
       $http.post('/search', { wine, hits: 10 })
         .then((res) => {
-          this.winerecomendations = res.data;
-          console.log(this.winerecomendations, 'wine recomendations');
+          this.winerecommendations = res.data;
         })
         .catch((err) => {
           console.error(err);
-          alert('Sorry, there was a problem fetching your recommendation. Please try again later.');
+          alert('Sorry, there was a problem fetching your recommendations. Please try again later.');
         });
     };
 })
   .component('pairingsform', {
-    // bindings: {
-    //   view: '<',
-    //   changeview: '<',
-    //   winerecomendations: '<',
-    //   mealrecomendations: '<'
-    // },
     templateUrl: '../templates/pairingsForm.html',
     controller: 'PairingsCtrl'
   });
