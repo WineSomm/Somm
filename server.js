@@ -183,23 +183,19 @@ app.post('/recipes', (req, res) => {
 
 app.post('/online', (req, res) => {
   res.redirect('/');
-})
+});
 
 app.get('/local', (req, res) => {
   axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${MAPS_TOKEN}`, {})
   .then((response) => {
-  // console.log(response.data, 'r.d.l. in first geo response');
-  // res.status(200).send(response.data.location);
   return response.data.location;
   })
   .then((location) => {
-  // console.log(location, 'location in returned promise');
   return axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${MAPS_TOKEN}`)
   })
   .then((response) => {
-    // console.log(response, 'r.d in places response')
-    console.log(response.data.candidates[0].geometry.location);
-    console.log(response.data);      
+    // console.log(response.data.candidates[0].geometry.location);
+    // console.log(response.data);      
     return response.data;
   })
   .then(response => res.send(response))
@@ -229,6 +225,21 @@ app.post('/local', (req, res) => {
   })
   .catch(err => console.error(err));
 })
+
+app.post('/buy', (req, res) => {
+  console.log(req.body.wine, 'console.log(req.body.wine)');
+  const query = req.body.wine;
+  axios.get(`http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=SenaiAya-Senaix27-PRD-fed5cedf3-d88f47f1&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=${query}&paginationInput.entriesPerPage=10&descriptionSearch=true`)
+    .then((response) => {
+      console.log(response.data, 'response.data');
+      res.send(response.data);
+      res.status(200);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(404).send();
+    });
+});
 
 app.listen(port, () => {
   console.log(`App is listening on ${port}`);

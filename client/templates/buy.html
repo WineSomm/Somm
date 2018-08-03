@@ -10,9 +10,6 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand">
-          <img height=30px src="../photos/small-logo.png">
-        </a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -33,21 +30,11 @@
           <li>
             <a href='/pairings.html'>Food Pairings</a>
           </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop Wines
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- TODO: NG CLICK TO BUY COMPONENT -->
-              <li>
-                <a href='../buy.html'>Find Online</a>
-              </li>
-              <li role="separator" class="divider"></li>
-              <!-- TODO: NG CLICK TO LOCAL COMPONENT -->
-              <li>
-                <a href='../local.html'>Wines Near Me</a>
-              </li>
-            </ul>
+          <li>
+            <a href='../local-outer.html'>Wines Near Me</a>
+          </li>
+          <li>
+            <a href='../buy.html'>Buy Wine Online</a>
           </li>
           <li>
             <a href="/login.html" ng-click="$ctrl.login()">Login</a>
@@ -72,4 +59,25 @@
     </div>
     <!-- /.container-fluid -->
   </nav>
+</div>
+
+<div ng-if="!$ctrl.results">
+  <h1 style="color: white">Please Search For The Wine in the Search Bar</h1>
+</div>
+
+
+<div ng-if="$ctrl.results" ng-repeat="result in $ctrl.results" class="container-fluid">
+  <div class="well">
+    <div class="row">
+      <img width="7%" class="wine-bottle" ng-src={{result.galleryURL[0]}}/>
+      <h4 class="item-text">
+        <b>{{result.title[0]}}</b>
+      </h4>
+      <a href={{result.viewItemURL[0]}}>
+        <button type="button" class="btn btn-default btn-md">
+          <span>Buy Now</span>
+        </button>
+      </a>
+    </div>
+  </div>
 </div>
