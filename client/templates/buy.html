@@ -37,11 +37,24 @@
             <a href='../buy.html'>Buy Wine Online</a>
           </li>
           <li>
-            <a href="/login.html" ng-click="$ctrl.login()">Login</a>
+            <a href='../forum.html'>Forum</a>
           </li>
-          <!-- TODO: NG CLICK TO DESTROY SESSION -->
-          <li>
-            <a href='/'>Logout</a>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/login.html" ng-click="$ctrl.login()">Login</a>
+              </li>
+              <li>
+                <a href="/signup.html" ng-click="$ctrl.gohome()">Create Account</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href='/'>Logout</a>
+              </li>
+            </ul>
           </li>
 
           <form class="navbar-form navbar-left">
@@ -63,7 +76,7 @@
 <img src="../photos/large-logo.png" width="30%">
 
 
-<div ng-if="$ctrl.results" ng-repeat="result in $ctrl.results" class="container-fluid">
+<div ng-repeat="result in $ctrl.results" class="container-fluid">
   <div class="well">
     <div class="row">
       <img width="7%" class="wine-bottle" ng-src={{result.galleryURL[0]}}/>

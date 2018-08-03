@@ -1,3 +1,4 @@
+<<<<<<< d1af17f0314066a91d91f2f29512a507e1171002
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -20,6 +21,7 @@
         <li><a href='/pairings.html'>Food Pairings</a></li>
         <li><a href='../local-outer.html'>Wines Near Me</a></li>
         <li><a href='../buy.html'>Buy Wine Online</a></li>      
+        <li><a href='../forum.html'>Forum</a></li>      
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -42,4 +44,51 @@
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+=======
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/" ng-click="$ctrl.gohome()">Home</a></li>
+        <li><a ng-click="$ctrl.favorites()">Favorites <span class="sr-only">(current)</span></a></li>
+        
+        <!-- TODO: NG CLICK TO PAIRINGS COMPONENT -->
+        <li><a href='/pairings.html'>Food Pairings</a></li>
+        <li><a href='../local-outer.html'>Wines Near Me</a></li>
+        <li><a href='../buy.html'>Buy Wine Online</a></li>      
+        <li><a href='../forum.html'>Forum</a></li>      
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="/login.html" ng-click="$ctrl.login()">Login</a></li>
+                <li><a href="/signup.html" ng-click="$ctrl.gohome()">Create Account</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href='/'>Logout</a></li>
+            </ul>
+          </li>
+
+        <form class="navbar-form navbar-right">
+            <div class="form-group">
+                <input ng-model="search" ng-keydown="$ctrl.onKeyPress($event, search)" type="text" class="form-control search" placeholder="What are you looking for?">
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            </div>
+            <button class="btn btn-default" type="submit" ng-click="$ctrl.onClick(search)">
+                <i class="fas fa-search"></i>Search</button>
+            <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+          </form>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+>>>>>>> Adding for pull
 </nav>

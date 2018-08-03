@@ -5,12 +5,6 @@ const session = require('express-session');
 const { DB_TOKEN } = require('./database-config');
 const { API_TOKEN, EDAMAM_TOKEN, EDAMAM_ID } = require('./api-config');
 const { MAPS_TOKEN } = require('./maps-config');
-const {
-  logoutUser,
-  checkIfUserLoggedIn,
-  createSession
-} = require('./helpers');
-
 require('dotenv').config();
 
 const mongoose = require('mongoose');
@@ -103,7 +97,7 @@ app.put('/favorite', (req, res) => {
     res.send('You need to log in to do that');
   } else {
     const username = req.session.username;
-    User.findOne({ username: username }, (err, entry) => {
+    User.findOne({ username }, (err, entry) => {
       if (entry.favorites) {
         const newFavorites = JSON.parse(entry.favorites);
         newFavorites.push(favorite);
@@ -127,7 +121,7 @@ app.get('/favorite', (req, res) => {
   if (!username) {
     res.status(400).send('You have to be logged in to load your favorites');
   } else {
-    User.findOne({username: username}, (err, entry) => {
+    User.findOne({ username }, (err, entry) => {
       if (entry.favorites) {
         res.send(entry.favorites);
       } else {
@@ -140,7 +134,7 @@ app.get('/favorite', (req, res) => {
 app.delete('/favorite', (req, res) => {
   const id = JSON.parse(req.query.body).id;
   const username = req.session.username;
-  User.findOne({ username: username }, (err, entry) => {
+  User.findOne({ username }, (err, entry) => {
     const newFavorites = JSON.parse(entry.favorites);
     newFavorites.forEach((item, index) => {
       if (item.id === id) {
@@ -193,44 +187,32 @@ app.post('/online', (req, res) => {
 
 app.get('/local', (req, res) => {
   axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${MAPS_TOKEN}`, {})
-  .then((response) => {
-  return response.data.location;
-  })
-  .then((location) => {
-  return axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${MAPS_TOKEN}`)
-  })
-  .then((response) => {
+    .then((response) => response.data.location)
+    .then((location) => axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${MAPS_TOKEN}`))
+    .then((response) => 
     // console.log(response.data.candidates[0].geometry.location);
     // console.log(response.data);      
-    return response.data;
-  })
-  .then(response => res.send(response))
-  .catch(err => console.error(err));
+     response.data
+  )
+    .then(response => res.send(response))
+    .catch(err => console.error(err));
 });
 
 app.post('/local', (req, res) => {
   axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${MAPS_TOKEN}`, {})
-  .then((response) => {
-  return response.data.location;
-  })
-  .then((location) => {
-  return axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${MAPS_TOKEN}`)
-  })
-  .then((response) => {
-    console.log(response.data.candidates[0].photos[0].photo_reference);      
-    return response.data.candidates[0].photos[0].photo_reference;
-  })
-  .then((photoRef) => {
-    return axios.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoRef}&key=${MAPS_TOKEN}`)
-  })
-  .then((response) => {
-    return response.data;
-  })
-  .then((pic) => {
-    res.send(pic);
-  })
-  .catch(err => console.error(err));
-})
+    .then((response) => response.data.location)
+    .then((location) => axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${MAPS_TOKEN}`))
+    .then((response) => {
+      console.log(response.data.candidates[0].photos[0].photo_reference);
+      return response.data.candidates[0].photos[0].photo_reference;
+    })
+    .then((photoRef) => axios.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoRef}&key=${MAPS_TOKEN}`))
+    .then((response) => response.data)
+    .then((pic) => {
+      res.send(pic);
+    })
+    .catch(err => console.error(err));
+});
 
 app.post('/buy', (req, res) => {
   console.log(req.body.wine, 'console.log(req.body.wine)');
@@ -247,7 +229,92 @@ app.post('/buy', (req, res) => {
     });
 });
 
-app.get('/logout', logoutUser);
+const PostSchema = mongoose.Schema({
+  title: String,
+  body: { type: String, required: true },
+  posted: { type: Date, default: Date.now },
+});
+
+const PostModel = mongoose.model('PostModel', PostSchema);
+
+
+function createPost(req, res) {
+  const post = req.body;
+  console.log(post, 'hello from server');
+  PostModel
+    .create(post)
+    .then((postObject) => {
+      // res.json(200);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  res.json(post);
+}
+
+function getpost(req, res) {
+  PostModel
+    .find()
+    .then((allposts) => {
+      res.json(allposts);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.send(400);
+    });
+}
+
+function deletePost(req, res) {
+  const postId = req.params.id;
+  PostModel
+    .remove({ _id: postId })
+    .then((success) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function getPostById(req, res) {
+  const postId = req.params.id;
+  PostModel
+    .findById(postId)
+    .then((post) => {
+      res.json(post);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+function updatepost(req, res) {
+  let postId = req.params.id;
+  let post = req.body;
+  console.log(postId, 'postId');
+  console.log(post, 'post');
+  PostModel
+    .update({ _id: postId }, {
+      title: post.title,
+      body: post.body,
+    })
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+app.post('/forum', createPost);
+
+app.get('/forum', getpost);
+
+app.delete('/forum/:id', deletePost);
+
+app.get('/forum/:id', getPostById);
+
+app.put('/forum/:id', updatepost);
 
 app.listen(port, () => {
   console.log(`App is listening on ${port}`);
