@@ -243,6 +243,93 @@ app.post('/buy', (req, res) => {
     });
 });
 
+const PostSchema = mongoose.Schema({
+  title: String,
+  body: { type: String, required: true },
+  posted: { type: Date, default: Date.now },
+});
+
+const PostModel = mongoose.model('PostModel', PostSchema);
+
+
+function createPost(req, res) {
+  const post = req.body;
+  console.log(post, 'hello from server');
+  PostModel
+    .create(post)
+    .then((postObject) => {
+      // res.json(200);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  res.json(post);
+}
+
+function getpost(req, res) {
+  PostModel
+    .find()
+    .then((allposts) => {
+      res.json(allposts);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.send(400);
+    });
+}
+
+function deletePost(req, res) {
+  const postId = req.params.id;
+  PostModel
+    .remove({ _id: postId })
+    .then((success) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function getPostById(req, res) {
+  const postId = req.params.id;
+  PostModel
+    .findById(postId)
+    .then((post) => {
+      res.json(post);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+function updatepost(req, res) {
+  let postId = req.params.id;
+  let post = req.body;
+  console.log(postId, 'postId');
+  console.log(post, 'post');
+  PostModel
+    .update({ _id: postId }, {
+      title: post.title,
+      body: post.body,
+    })
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+app.post('/forum', createPost);
+
+app.get('/forum', getpost);
+
+app.delete('/forum/:id', deletePost);
+
+app.get('/forum/:id', getPostById);
+
+app.put('/forum/:id', updatepost);
+
 app.get('/logout', helpers.logoutUser);
 
 app.listen(port, () => {
