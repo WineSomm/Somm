@@ -1,0 +1,26 @@
+<div>
+  <navbar></navbar>
+</div>
+<img src="../photos/large-logo.png" width="30%">
+<div class="=contanier">
+  <h1 style="color: white">Forum</h1>
+
+
+  <input ng-model="post.title" class="form-control" type="text" placeholder="title">
+  <textarea ng-model="post.body" class="form-control" name="" id="" cols="30" rows="10" placeholder="Leave Us A Message"></textarea>
+  <button ng-click="$ctrl.createpost(post)" class="btn btn-primary btn-block">Post</button>
+  <button ng-click="$ctrl.updatepost(post)" class="btn btn-success btn-block">Update Post</button>
+
+  <div ng-repeat="post in posts" style="background-color: white" >
+    <h2>
+      {{post.title}}
+      <a ng-click="$ctrl.editPost(post._id)" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
+      <a ng-click="$ctrl.deletePost(post._id)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+    </h2>
+    <em>{{post.posted}}</em>
+    <p>{{post.body}}</p>
+  </div>
+
+</div>
+
+
