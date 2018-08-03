@@ -8,12 +8,18 @@ angular.module('app')
           password: password,
         })
           .then((res) => {
-            $window.location.href = '/';
-            alert('Welcome back!');
+            swal({
+            title: "Welcome Back!",
+            icon: "success",
+            buttons: false,
+            timer: 1500
+          });
+          let relocate = () => {$window.location.href='/'};
+          setTimeout(relocate,1200)
           })
           .catch((err) => {
             console.error(err);
-            alert('Sorry, there was a problem with your username or password. Remember, they are case sensitive');
+            swal({text:'Sorry, there was a problem with your username or password. Remember, they are case sensitive', icon: "error"});
           });
       };
     },
