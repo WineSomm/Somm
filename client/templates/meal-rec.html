@@ -35,7 +35,10 @@
                                                         </ul>
                                                         </div>
                                                         <br>
-                                                        <a href="{{recipe.recipe.url}}">{{recipe.recipe.url}}</a>
+                                                        <a href="{{recipe.recipe.url}}">
+                                                            <button> Get Recipe </button>
+                                                        </a>
+                                                        <button class="fb-share-button" data-href="{{recipe.recipe.url}}" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{recipe.recipe.url}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" class="fb-xfbml-parse-ignore">Share on Facebook</a></button>
                                                     </div>
                                                 </div>
                                                 <br>
@@ -49,4 +52,5 @@
                 
             </div>
         </div>
+        <div id="edamam-badge" data-color="transparent"></div>
     </div>
