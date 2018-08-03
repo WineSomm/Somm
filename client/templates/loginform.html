@@ -1,4 +1,4 @@
-<navbar></navbar>
+<br><br><br>
 <div class="container-fluid">
     <a href="/" ng-click=$ctrl.gohome()><img width="30%" src="../photos/large-logo.png"></a>
 </div>
@@ -8,13 +8,18 @@
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
+      <div>
+          <h3 style="color:white" for="username">Login to your account</h3>
+
+      </div>
+      <br>
         <form>
             <div class="form-group">
-              <label style="color:white" for="username">Enter your username</label>
+              <br>
               <input ng-model="username" type="text" class="form-control" id="formGroupExampleInput" placeholder="Your username here">
             </div>
             <div class="form-group">
-              <label style="color:white" for="password">Enter your password</label>
+              <label style="color:white" for="password"></label>
               <input ng-model="password" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Your password here">
             </div>
               <button type="button" class="btn btn-dark" ng-click="$ctrl.onClick(username, password)">LOG IN</button>
