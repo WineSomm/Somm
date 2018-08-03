@@ -1,7 +1,9 @@
 angular.module('app')
   .component('forum', {
     controller($scope, $http) {
+      this.show = false;
       this.editPost = (postId) => {
+        this.show = true;
         $http
           .get('/forum/'+postId)
           .then((res) => {
