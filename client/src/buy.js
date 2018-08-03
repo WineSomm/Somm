@@ -25,6 +25,7 @@ angular.module('app')
         // console.log(input, 'input');
         const keyword = input.split(' ').join('%20');
         $scope.search = '';
+        swal('Your Results Are Loading!', '');
         $http.post('/buy', {
           wine: keyword,
         })
