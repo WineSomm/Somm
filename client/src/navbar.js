@@ -33,6 +33,12 @@ angular.module('app')
             });
         }
       };
+      this.logout = () => {
+        $http.get('/logout')
+          .then((res) => {
+            alert('Come back soon.');
+          })
+      }
       this.gohome = () => {
         this.favoriteView = false;
         this.selected = null;
