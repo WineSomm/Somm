@@ -1,21 +1,17 @@
 const express = require('express');
-const { json, urlencoded } = require('body-parser');
+const bodyParser = require('body-parser');
 const axios = require('axios');
 const session = require('express-session');
-const { DB_TOKEN } = require('./database-config');
-const { API_TOKEN, EDAMAM_TOKEN, EDAMAM_ID } = require('./api-config');
-const { MAPS_TOKEN } = require('./maps-config');
-const {
-  logoutUser,
-  checkIfUserLoggedIn,
-  createSession
-} = require('./helpers');
+const dbc = require('./database-config');
+const api = require('./api-config');
+const maps = require('./maps-config');
+const helpers = require('./helpers');
 
 require('dotenv').config();
 
 const mongoose = require('mongoose');
 
-const MongoDb = DB_TOKEN;
+const MongoDb = dbc.DB_TOKEN;
 
 mongoose.connect(MongoDb, {
   useMongoClient: true,
@@ -36,8 +32,8 @@ const userSchema = mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 const app = express();
-app.use(urlencoded({ extended: false }));
-app.use(json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.set('view engine', 'jade');
 
@@ -51,7 +47,7 @@ app.use(session({
 
 app.use(express.static(`${__dirname}/client`));
 
-const port = process.env.PORT || 9000;
+const port = 80;
 
 app.get('/signup', (req, res) => {
   res.end();
@@ -161,7 +157,7 @@ app.post('/search', (req, res) => {
   const query = req.body.wine;
   axios.get('http://api.snooth.com/wines', {
     params: {
-      akey: API_TOKEN,
+      akey: api.API_TOKEN,
       q: query,
       n: req.body.hits || 25,
     },
@@ -177,7 +173,7 @@ app.post('/search', (req, res) => {
 
 app.post('/recipes', (req, res) => {
   const query = req.body.mealPreference;
-  axios.get(`https://api.edamam.com/search?q=${query}&app_id=${EDAMAM_ID}&app_key=${EDAMAM_TOKEN}`)
+  axios.get(`https://api.edamam.com/search?q=${query}&app_id=${api.EDAMAM_ID}&app_key=${api.EDAMAM_TOKEN}`)
     .then((response) => {
       res.status(200).send(response.data.hits);
     })
@@ -192,12 +188,12 @@ app.post('/online', (req, res) => {
 });
 
 app.get('/local', (req, res) => {
-  axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${MAPS_TOKEN}`, {})
+  axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${maps.MAPS_TOKEN}`, {})
   .then((response) => {
   return response.data.location;
   })
   .then((location) => {
-  return axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${MAPS_TOKEN}`)
+  return axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${maps.MAPS_TOKEN}`)
   })
   .then((response) => {
     // console.log(response.data.candidates[0].geometry.location);
@@ -209,19 +205,19 @@ app.get('/local', (req, res) => {
 });
 
 app.post('/local', (req, res) => {
-  axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${MAPS_TOKEN}`, {})
+  axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${maps.MAPS_TOKEN}`, {})
   .then((response) => {
   return response.data.location;
   })
   .then((location) => {
-  return axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${MAPS_TOKEN}`)
+  return axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Wine%20Store&inputtype=textquery&fields=photos,price_level,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:2000@${location.lat},${location.lng}&key=${maps.MAPS_TOKEN}`)
   })
   .then((response) => {
     console.log(response.data.candidates[0].photos[0].photo_reference);      
     return response.data.candidates[0].photos[0].photo_reference;
   })
   .then((photoRef) => {
-    return axios.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoRef}&key=${MAPS_TOKEN}`)
+    return axios.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoRef}&key=${maps.MAPS_TOKEN}`)
   })
   .then((response) => {
     return response.data;
@@ -247,7 +243,7 @@ app.post('/buy', (req, res) => {
     });
 });
 
-app.get('/logout', logoutUser);
+app.get('/logout', helpers.logoutUser);
 
 app.listen(port, () => {
   console.log(`App is listening on ${port}`);
