@@ -4,6 +4,7 @@ angular.module('app')
     controller($http, $window) {
       
       this.onClick = ($window) => {
+        swal('More Local Shops Loading', '')
         $window.location.href = '../more-local.html'
       }
   }})
