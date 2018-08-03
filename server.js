@@ -5,6 +5,11 @@ const session = require('express-session');
 const { DB_TOKEN } = require('./database-config');
 const { API_TOKEN, EDAMAM_TOKEN, EDAMAM_ID } = require('./api-config');
 const { MAPS_TOKEN } = require('./maps-config');
+const {
+  logoutUser,
+  checkIfUserLoggedIn,
+  createSession
+} = require('./helpers');
 require('dotenv').config();
 
 const mongoose = require('mongoose');
@@ -240,6 +245,8 @@ app.post('/buy', (req, res) => {
       res.status(404).send();
     });
 });
+
+app.get('/logout', logoutUser);
 
 app.listen(port, () => {
   console.log(`App is listening on ${port}`);
