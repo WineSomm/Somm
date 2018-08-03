@@ -73,3 +73,18 @@
     <!-- /.container-fluid -->
   </nav>
 </div>
+
+<!-- <purchase ng-if="$ctrl.results" ng-repeat="result in $ctrl.results" result="result"></purchase> -->
+<div ng-if="$ctrl.results" ng-repeat="result in $ctrl.results" class="container-fluid">
+  <div class="well">
+    <div class="row">
+      <img class="wine-bottle" ng-src={{result.galleryURL[0]}}/>
+      <h4 class="item-text"><b>{{result.title[0]}}</b></h4>
+      <!-- <h4 class="item-text"><b>{{result.galleryURL[0]}}</b></h4> -->
+      <pre result="$ctrl.result">{{result.title[0]}}</pre>
+      <button type="button" class="btn btn-default btn-md">
+        <span class="glyphicon glyphicon-star" aria-hidden="true">Buy Now</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -169,11 +169,6 @@ app.post('/search', (req, res) => {
     });
 });
 
-app.post('/online', (req, res) => {
-  // res.sendStatus(200);
-  res.redirect('/');
-})
-
 app.get('/local', (req, res) => {
   axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${MAPS_TOKEN}`, {})
   .then((response) => {
@@ -218,6 +213,21 @@ app.post('/local', (req, res) => {
   })
   .catch(err => console.error(err));
 })
+
+app.post('/buy', (req, res) => {
+  console.log(req.body.wine, 'console.log(req.body.wine)');
+  const query = req.body.wine;
+  axios.get(`http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=SenaiAya-Senaix27-PRD-fed5cedf3-d88f47f1&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=${query}&paginationInput.entriesPerPage=10&descriptionSearch=true`)
+    .then((response) => {
+      console.log(response.data, 'response.data');
+      res.send(response.data);
+      res.status(200);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(404).send();
+    });
+});
 
 app.listen(port, () => {
   console.log(`App is listening on ${port}`);
