@@ -26,7 +26,7 @@ const createSession = (req, res) => {
 };
 
 module.exports = {
-  checkIfUserLoggedIn,
-  createSession,
-  logoutUser
+  checkIfUserLoggedIn: checkIfUserLoggedIn,
+  createSession:createSession,
+  logoutUser:logoutUser
 };
