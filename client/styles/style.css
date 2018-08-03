@@ -59,6 +59,6 @@ glyphicon {
   background-color: #482961;
   border-color: white;
 }
-/* .swal-overlay {
-  background-color: rgba(131, 217, 244, 0.81);
-} */
+.swal-overlay {
+  background-color: rgba(148, 72, 255, 0.673)
+}
