@@ -14,19 +14,32 @@
                             <div class="row">
                                 <div class="col-md-12">
                                         <ul align="middle">
-                                            <li ng-repeat="recipe in $ctrl.mealrecommendations" recipe="recipe">
-                                                <div class="card" align="middle">
+                                            <div ng-repeat="recipe in $ctrl.mealrecommendations" recipe="recipe">
+                                                <div class="card" align="middle" ng-if="$ctrl.showRecipe === false" ng-click="$ctrl.toggle()">
                                                     <div class="card-body">
                                                         <div class="col-md-12">
-                                                            <img alt="Bootstrap Image Preview" style="margin: auto" src="{{recipe.recipe.image}}" />
+                                                            <img alt="Bootstrap Image Preview" style="margin: auto; width: 80%" src="{{recipe.recipe.image}}" />
                                                         </div>           
                                                     </div>
                                                     <div class="card-body">
                                                         <div>{{recipe.recipe.label}}</div>
                                                     </div>
                                                 </div>
+                                                <div class="card" align="middle" ng-if="$ctrl.showRecipe === true" ng-click="$ctrl.toggle()">
+                                                    <div align="middle" class="card-body">
+                                                        <div>{{recipe.recipe.label}}</div>
+                                                        <br>
+                                                        <div>
+                                                        <ul align="middle" ng-repeat="ingredient in recipe.recipe.ingredientLines" ingredient="ingredient">
+                                                            {{ingredient}}
+                                                        </ul>
+                                                        </div>
+                                                        <br>
+                                                        <a href="{{recipe.recipe.url}}">{{recipe.recipe.url}}</a>
+                                                    </div>
+                                                </div>
                                                 <br>
-                                            </li>
+                                            </div>
                                         </ul>
                                 </div>
                             </div>
