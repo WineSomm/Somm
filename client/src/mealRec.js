@@ -1,5 +1,10 @@
 angular.module('app')
-    .controller('MealCtrl', function(){})
+    .controller('MealCtrl', function(){
+        this.showRecipe = false;
+        this.toggle = () => {
+            this.showRecipe = !this.showRecipe;
+        };
+    })
     .component('mealrec', {
         bindings: {
             mealrecommendations: '<',
