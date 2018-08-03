@@ -183,7 +183,7 @@ app.post('/recipes', (req, res) => {
 
 app.post('/online', (req, res) => {
   res.redirect('/');
-})
+});
 
 app.get('/local', (req, res) => {
   axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${MAPS_TOKEN}`, {})
