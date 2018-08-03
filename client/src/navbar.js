@@ -33,10 +33,21 @@ angular.module('app')
             });
         }
       };
+      this.login = () => $window.location.href = '/login.html';
+
+      this.goCreate = () => $window.location.href = '/signup.html';
+  
       this.logout = () => {
         $http.get('/logout')
           .then((res) => {
-            alert('Come back soon.');
+            swal({
+              title: "Goodbye!",
+              icon: "success",
+              buttons: false,
+              timer: 1500
+            });
+            let relocate = () => {$window.location.href='/'};
+            setTimeout(relocate,1500)
           })
       }
       this.gohome = () => {
@@ -51,7 +62,7 @@ angular.module('app')
             this.wineList = data;
             this.favoriteView = true;
           }, (err) => {
-            alert('You have to be logged in to do that');
+            swal('You have to be logged in to do that', {icon: "error"});
             console.error(err);
           });
       };

@@ -4,6 +4,7 @@ angular.module('app')
     controller($http, $window) {
       this.location;
       this.$onInit = () => {
+        swal('Your Local Wine Shop Is Coming Soon!', '');
         $http.get('/local', {})
         .then((res) => {
           this.location = res.data.candidates[0].geometry.location;

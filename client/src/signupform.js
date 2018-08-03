@@ -8,12 +8,14 @@ angular.module('app')
           password: password,
         })
           .then((res) => {
-            $window.location.href = '/';
-            alert('You are now logged in');
+            swal('Welcome to SOMM!', 'Your account has been created.');
+            let relocate = () => {$window.location.href = '/';}
+            setTimeout(relocate, 1500);
+            
           })
           .catch((err) => {
             console.error(err);
-            alert('Sorry, there was a problem. Please try signing up again.');
+            swal('Sorry, there was a problem. Please try signing up again.');
           });
       };
     },
