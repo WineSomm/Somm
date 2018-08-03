@@ -10,6 +10,8 @@ const {
   checkIfUserLoggedIn,
   createSession
 } = require('./helpers');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 require('dotenv').config();
 
 const mongoose = require('mongoose');
@@ -51,6 +53,27 @@ app.use(session({
 app.use(express.static(`${__dirname}/client`));
 
 const port = process.env.PORT || 9000;
+
+passport.use(new GoogleStrategy({
+  clientID: '918509475811-tr8o3fb8hlklljtlbheaagsg44r68hsj.apps.googleusercontent.com',
+  clientSecret: 'uLFj5c6MPkDqf4ajUDSpn8kk',
+  callbackURL: 'http://localhost:9000/auth/google/callback'
+}, function(token, tokenSecret, profile, done) {
+  User.findOrCreate({ googleId: profile.id }, function(err, user) {
+    return done(err, user);
+  });
+}
+));
+
+app.get('/auth/google',
+  passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login' }));
+
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+});  
+  
 
 app.get('/signup', (req, res) => {
   res.end();
