@@ -47,7 +47,7 @@ app.use(session({
 
 app.use(express.static(`${__dirname}/client`));
 
-const port = 80;
+const port = process.env.PORT || 9000;
 
 app.get('/signup', (req, res) => {
   res.end();
