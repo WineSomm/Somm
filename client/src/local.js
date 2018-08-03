@@ -4,7 +4,7 @@ angular.module('app')
     controller($http, $window) {
       this.location;
       this.$onInit = () => {
-        swal('Your Local Wine Shop Is Coming Soon!', '');
+        swal('Your Local Wine Shop Is Loading!', '');
         $http.get('/local', {})
         .then((res) => {
           this.location = res.data.candidates[0].geometry.location;
@@ -22,8 +22,10 @@ angular.module('app')
           this.url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBd_Xqb8heicTe-g_UALlO1131GqyoZNLw&q=${this.lat},${this.lng}`;
         })
       }
-      this.onClick = ($window) => {
-        $window.location.href = '../more-local.html'
+      this.onClick = () => {
+        swal('More Local Shops Loading', '')
+        let relocate = () => $window.location.href = '../more-local.html';
+        setTimeout(relocate, 1500);
       };
     },
   });

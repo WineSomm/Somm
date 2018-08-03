@@ -14,8 +14,8 @@ angular.module('app')
             buttons: false,
             timer: 1500
           });
-          let relocate = () => {$window.location.href='/'};
-          setTimeout(relocate,1200)
+          let relocate = () => $window.location.href='/';
+          setTimeout(relocate,1200);
           })
           .catch((err) => {
             console.error(err);
