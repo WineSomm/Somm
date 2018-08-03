@@ -2,6 +2,9 @@ angular.module('app')
   .controller('PairingsCtrl', function($http) {
     this.view = 'form';
     this.changeview = function(viewChoice) {
+      swal({
+        icon: "success",
+      });
       this.view = viewChoice;
     };
 
