@@ -5,12 +5,6 @@ const session = require('express-session');
 const { DB_TOKEN } = require('./database-config');
 const { API_TOKEN, EDAMAM_TOKEN, EDAMAM_ID } = require('./api-config');
 const { MAPS_TOKEN } = require('./maps-config');
-const {
-  logoutUser,
-  checkIfUserLoggedIn,
-  createSession
-} = require('./helpers');
-
 require('dotenv').config();
 
 const mongoose = require('mongoose');
@@ -235,7 +229,6 @@ app.post('/buy', (req, res) => {
     });
 });
 
-app.get('/logout', logoutUser);
 const PostSchema = mongoose.Schema({
   title: String,
   body: { type: String, required: true },
