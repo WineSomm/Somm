@@ -1,4 +1,4 @@
-Demo for this app is available at: https://wine-somm.herokuapp.com
+##Demo for this app is available at: https://wine-somm.herokuapp.com
 
 Node.js / Express.js / MongoDb (+Mongoose) Boilerplate
 This is boilerplate code for setting up a simple node.js RESTful API app using: angularJS, expressJS, and a MongoDb database (with the help of Mongoose).Please refer to the following documentation for each of these components:
