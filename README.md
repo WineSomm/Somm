@@ -2,14 +2,14 @@
 
 Project Description
 
-## Demo for this app is available at: https://wine-somm.herokuapp.com
+### Demo for this app is available at: https://wine-somm.herokuapp.com
 
 ## Stack 
 
-AngularJS: https://angularjs.org
-Node.js: http://nodejs.org/
-Express.js: http://expressjs.com/
-Moongoose.js (for MongoDB interaction): http://mongoosejs.com/
+* AngularJS: https://angularjs.org
+* Node.js: http://nodejs.org/
+* Express.js: http://expressjs.com/
+* Moongoose.js (for MongoDB interaction): http://mongoosejs.com/
 
 
 ## Prerequisites  
@@ -36,7 +36,7 @@ app.db = mongoose.connect(<Your MongoDB DB here>);
 ```
 # Getting started with your local development server  
 
-###Starting the Server
+### Starting the Server
 
 We're ready to go! 
 ```
@@ -60,3 +60,11 @@ npm run dev  // Defined in package.json
 Open web browser to http://localhost:9000 to view the web app.
 
 Stop the web server press Ctrl+c in the Terminal window.
+
+## Authors
+
+* **MatthewCReid** 
+
+* **athenaturek**
+
+* **SenaiAyalew**
