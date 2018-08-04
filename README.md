@@ -63,8 +63,8 @@ Stop the web server press Ctrl+c in the Terminal window.
 
 ## Authors
 
-* **MatthewCReid** 
+* Matthew Reid - (https://github.com/MatthewCReid)
 
-* **athenaturek**
+* Athena Turek - (https://github.com/athenaturek)
 
-* **SenaiAyalew**
+* Senai Ayalew - (https://github.com/SenaiAlayew)
