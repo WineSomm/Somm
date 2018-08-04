@@ -4,7 +4,7 @@ A wine exploration application that allows the user to search for and favorite w
 
 ### Demo for this app is available at: https://wine-somm.herokuapp.com
 
-Note: Some feature may not work until you add your API keys
+Note: Some features may not work until you add your API keys
 
 ## Stack 
 
