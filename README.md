@@ -1,6 +1,6 @@
 # SOMM-Legacy
 
-Project Description
+A wine exploration application that allows the user to search for and favorite wines, find wines online, get food pairings based on food or wine preferences, chat with others about wine, and find local wine stores based on location.
 
 ### Demo for this app is available at: https://wine-somm.herokuapp.com
 
@@ -28,11 +28,11 @@ app.db = mongoose.connect(<Your MongoDB DB here>);
 ```
 ### You will need the following API keys:
 ```
-  - Snooth
-  - Edamam
-  - eBay
-  - Google Maps
-  - Google Places
+  * Snooth
+  * Edamam
+  * eBay
+  * Google Maps
+  * Google Places
 ```
 # Getting started with your local development server  
 
